@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luo City Spa | Admin</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="index.html" class="logo"
+            ><img src="menu_logo_v2.png" alt="Luo City Spa"
+          /></a>
+          <div
+            class="menu-toggle"
+            onclick="
+              document.querySelector('.nav-links').classList.toggle('active')
+            "
+          >
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">View Site</a></li>
+            <li><a href="admin.html" class="active">Admin</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container" id="admin-view">
+      <div
+        id="auth-box"
+        style="
+          max-width: 400px;
+          margin: 50px auto;
+          background: white;
+          padding: 30px;
+          border-radius: 10px;
+          text-align: center;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        "
+      >
+        <h2>Admin Login</h2>
+        <input
+          type="email"
+          id="login-email"
+          placeholder="Email"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+          "
+        />
+        <input
+          type="password"
+          id="login-pass"
+          placeholder="Password"
+          style="
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+          "
+        />
+        <button class="btn" onclick="login()">Login</button>
+        <div style="margin-top: 10px; font-size: 0.8rem; color: #888">
+          Use "Create User" below first if new.
+        </div>
+        <div
+          style="
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+          "
+        >
+          <button
+            class="btn"
+            style="background: #666; font-size: 0.8rem"
+            onclick="createUser()"
+          >
+            Create User
+          </button>
+        </div>
+      </div>
+
+      <div id="dashboard-box" class="hide">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+          "
+        >
+          <h2>Content Manager</h2>
+          <button class="btn" style="background: #333" onclick="logout()">
+            Logout
+          </button>
+        </div>
+
+        <div class="admin-panel">
+          <h3><i class="fas fa-images"></i> Home Page Banners</h3>
+          <div class="admin-form">
+            <input type="text" id="banner-url" placeholder="Banner Image URL" />
+            <button class="btn" onclick="addContent('banner')">
+              Add Banner
+            </button>
+          </div>
+          <div id="admin-banner-list"></div>
+        </div>
+
+        <div class="admin-panel">
+          <h3><i class="fas fa-spa"></i> Add Service Package</h3>
+          <div class="admin-form">
+            <input
+              type="text"
+              id="serv-title"
+              placeholder="Service Name (e.g. Swedish Massage)"
+            />
+            <textarea
+              id="serv-desc"
+              placeholder="Description (e.g. 60 mins relaxing oil massage...)"
+            ></textarea>
+            <input type="text" id="serv-img" placeholder="Image URL" />
+            <button class="btn" onclick="addContent('service')">
+              Add Service
+            </button>
+          </div>
+          <div id="admin-service-list"></div>
+        </div>
+
+        <div class="admin-panel">
+          <h3><i class="fas fa-images"></i> Add Photo</h3>
+          <div class="admin-form">
+            <input type="text" id="img-url" placeholder="Image URL" />
+            <button class="btn" onclick="addContent('gallery')">
+              Add to Gallery
+            </button>
+          </div>
+          <div id="admin-gallery-list"></div>
+        </div>
+
+        <div class="admin-panel">
+          <h3><i class="fas fa-video"></i> Add Video</h3>
+          <div class="admin-form">
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px">
+              Enter YouTube Embed URL (e.g. https://www.youtube.com/embed/...)
+            </p>
+            <input type="text" id="vid-url" placeholder="YouTube URL" />
+            <input
+              type="text"
+              id="vid-title"
+              placeholder="Video Title"
+              style="margin-top: 10px"
+            />
+            <button class="btn" onclick="addContent('video')">Add Video</button>
+          </div>
+          <div id="admin-video-list"></div>
+        </div>
+
+        <div class="admin-panel">
+          <h3><i class="fas fa-share-alt"></i> Add Social Post</h3>
+          <div class="admin-form">
+            <textarea
+              id="post-content"
+              placeholder="Post content..."
+            ></textarea>
+            <input
+              type="text"
+              id="post-img"
+              placeholder="Image URL (Optional)"
+            />
+            <input
+              type="text"
+              id="post-link"
+              placeholder="Post Link (e.g. https://facebook.com/post/123)"
+              style="border-left: 3px solid var(--secondary)"
+            />
+            <button class="btn" onclick="addContent('social')">Add Post</button>
+          </div>
+          <div id="admin-social-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAfaVfpgWBP0l1xnt0s91mR2C6mSWAam6U",
+        authDomain: "luo-city-spa-club-836bf.firebaseapp.com",
+        projectId: "luo-city-spa-club-836bf",
+        storageBucket: "luo-city-spa-club-836bf.firebasestorage.app",
+        messagingSenderId: "25443267460",
+        appId: "1:25443267460:web:d345d5227187b6716da3d1",
+        measurementId: "G-P857NTSPJ2",
+      };
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+      const auth = firebase.auth();
+
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          document.getElementById("auth-box").classList.add("hide");
+          document.getElementById("dashboard-box").classList.remove("hide");
+          loadAdminData();
+        } else {
+          document.getElementById("auth-box").classList.remove("hide");
+          document.getElementById("dashboard-box").classList.add("hide");
+        }
+      });
+
+      function login() {
+        const e = document.getElementById("login-email").value;
+        const p = document.getElementById("login-pass").value;
+        auth
+          .signInWithEmailAndPassword(e, p)
+          .catch((err) => alert(err.message));
+      }
+      function createUser() {
+        const e = document.getElementById("login-email").value;
+        const p = document.getElementById("login-pass").value;
+        auth
+          .createUserWithEmailAndPassword(e, p)
+          .then(() => alert("Created! Login now."))
+          .catch((err) => alert(err.message));
+      }
+      function logout() {
+        auth.signOut();
+      }
+
+      function addContent(type) {
+        let data = {};
+        let refName = "";
+
+        // NEW: Banner Logic
+        if (type === "banner") {
+          const url = document.getElementById("banner-url").value;
+          if (!url) return;
+          data = { url, date: Date.now() };
+          refName = "banners";
+          document.getElementById("banner-url").value = "";
+        } else if (type === "service") {
+          const title = document.getElementById("serv-title").value;
+          const desc = document.getElementById("serv-desc").value;
+          const image = document.getElementById("serv-img").value;
+          if (!title) return;
+          data = { title, description: desc, image, date: Date.now() };
+          refName = "services";
+          document.getElementById("serv-title").value = "";
+          document.getElementById("serv-desc").value = "";
+          document.getElementById("serv-img").value = "";
+        } else if (type === "gallery") {
+          const url = document.getElementById("img-url").value;
+          if (!url) return;
+          data = { url, date: Date.now() };
+          refName = "gallery";
+          document.getElementById("img-url").value = "";
+        } else if (type === "video") {
+          const url = document.getElementById("vid-url").value;
+          const title = document.getElementById("vid-title").value;
+          if (!url) return;
+          data = { url, title, date: Date.now() };
+          refName = "videos";
+          document.getElementById("vid-url").value = "";
+          document.getElementById("vid-title").value = "";
+        } else if (type === "social") {
+          const content = document.getElementById("post-content").value;
+          const image = document.getElementById("post-img").value;
+          const link = document.getElementById("post-link").value;
+          if (!content) return;
+          data = { content, image, link, date: Date.now() };
+          refName = "social";
+          document.getElementById("post-content").value = "";
+          document.getElementById("post-img").value = "";
+          document.getElementById("post-link").value = "";
+        }
+
+        db.ref(refName).push(data);
+        alert("Added!");
+      }
+
+      function deleteItem(type, key) {
+        if (confirm("Delete this item?")) {
+          db.ref(type + "/" + key).remove();
+        }
+      }
+
+      function loadAdminData() {
+        const renderList = (snap, id, type) => {
+          const el = document.getElementById(id);
+          if (!el) return;
+
+          el.innerHTML = "";
+          if (snap.val()) {
+            Object.entries(snap.val())
+              .reverse()
+              .forEach(([key, item]) => {
+                let contentHtml = "";
+                let dateStr = new Date(item.date).toLocaleDateString();
+
+                if (type === "banners") {
+                  contentHtml = `<img src="${item.url}" style="height:50px; border-radius:4px;"> <strong>Banner Slide</strong>`;
+                } else if (type === "services") {
+                  contentHtml = `<strong>${item.title}</strong><br><small style="color:#666;">${item.description ? item.description.substring(0, 40) + "..." : ""}</small>`;
+                } else if (type === "videos") {
+                  contentHtml = `<strong>${item.title}</strong><br><small style="color:#666;">${item.url}</small>`;
+                } else if (type === "gallery") {
+                  contentHtml = `<img src="${item.url}" style="height:50px; border-radius:4px;">`;
+                } else if (type === "social") {
+                  const imgHtml = item.image
+                    ? `<img src="${item.image}" style="width:30px; height:30px; object-fit:cover; border-radius:4px; margin-right:8px; float:left;">`
+                    : "";
+                  const linkHtml = item.link
+                    ? `<i class="fas fa-link" style="color:var(--primary); margin-left:5px;" title="Link attached"></i>`
+                    : "";
+
+                  contentHtml = `
+                                <div style="display:flex; align-items:center;">
+                                    ${imgHtml}
+                                    <span>${item.content.substring(0, 40)}${item.content.length > 40 ? "..." : ""} ${linkHtml}</span>
+                                </div>`;
+                }
+
+                el.innerHTML += `
+                            <div class="admin-item" style="overflow:hidden;">
+                                <button class="del-btn" onclick="deleteItem('${type}', '${key}')">×</button>
+                                <div style="color:#aaa; font-size:0.7rem; margin-bottom:5px;">${dateStr}</div>
+                                ${contentHtml}
+                            </div>`;
+              });
+          }
+        };
+
+        // Attach Listeners
+        db.ref("banners").on("value", (s) =>
+          renderList(s, "admin-banner-list", "banners"),
+        ); // New Listener
+        db.ref("services").on("value", (s) =>
+          renderList(s, "admin-service-list", "services"),
+        );
+        db.ref("gallery").on("value", (s) =>
+          renderList(s, "admin-gallery-list", "gallery"),
+        );
+        db.ref("videos").on("value", (s) =>
+          renderList(s, "admin-video-list", "videos"),
+        );
+        db.ref("social").on("value", (s) =>
+          renderList(s, "admin-social-list", "social"),
+        );
+      }
+    </script>
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Luo City Spa Club</h3>
+            <p>
+              Take a break from your busy routine. Relax, Recharge & Rejuvenate
+              at the Best Manila Spa Experience.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Esplanade Seaside Terminal,
+              MOA Complex, Pasay
+            </p>
+            <p><i class="fas fa-phone"></i> +63-999-816-8888</p>
+            <p><i class="fas fa-envelope"></i> info@luospa.com</p>
+          </div>
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="https://www.facebook.com/luocityspa.page"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://www.instagram.com/luocity.spa/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://www.tiktok.com/@luocity.spa"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Luo City Spa Club. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

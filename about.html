@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luo City Spa | About</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="index.html" class="logo"
+            ><img src="menu_logo_v2.png" alt="Luo City Spa"
+          /></a>
+          <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li class="nav-item-dropdown">
+              <a href="gallery.html">Gallery <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="gallery.html">Photos/Videos</a>
+                <a href="social.html">Social Updates</a>
+              </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+              <a
+                href="admin.html"
+                style="
+                  border: 1px solid var(--primary);
+                  padding: 5px 15px;
+                  border-radius: 20px;
+                "
+                >Admin</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px">
+      <div class="section-header">
+        <h2>About Luo City Spa Club</h2>
+        <p>Relax, Recharge & Rejuvenate by the Manila Bay shoreline</p>
+      </div>
+
+      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center; margin-bottom: 60px;">
+        <div>
+          <h3 style="margin-bottom: 15px">Our Story</h3>
+          <p style="margin-bottom: 15px">
+            Luo City Spa Club was created to be a quiet escape in the middle of the
+            city — a place where professionals, families, and travellers can pause,
+            breathe, and reconnect with themselves. Overlooking the scenic
+            Esplanade Seaside Terminal in the MOA Complex, our spa blends modern
+            wellness with the calming energy of Manila Bay.
+          </p>
+          <p>
+            From the moment you arrive, our team is focused on one thing: your
+            comfort. Every treatment, scent, sound and space is thoughtfully
+            designed to help you feel restored, renewed and ready for what comes
+            next.
+          </p>
+        </div>
+        <div>
+          <div class="card" style="overflow: hidden">
+            <img
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80"
+              alt="Relaxing spa ambience"
+              style="width: 100%; height: 260px; object-fit: cover"
+            />
+            <div class="card-content" style="text-align: left">
+              <h3 style="margin-bottom: 10px">A Calm Space in the City</h3>
+              <p>
+                Soft lighting, warm interiors and attentive service come together
+                to create a sanctuary where you can slow down — even just for a
+                few hours.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-bottom: 60px">
+        <h3 style="text-align: center; margin-bottom: 30px">What Makes Us Different</h3>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-content">
+              <i class="fas fa-spa" style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px"></i>
+              <h3 style="margin-bottom: 10px">Thoughtful Treatments</h3>
+              <p>
+                From classic massages to signature Luo City rituals, our offerings
+                are curated to ease tension, calm the mind and promote better
+                rest.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <i class="fas fa-water" style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px"></i>
+              <h3 style="margin-bottom: 10px">Seaside Location</h3>
+              <p>
+                Located at Esplanade Seaside Terminal, our spa lets you enjoy
+                gentle bay breezes and city lights — a unique backdrop to your
+                wellness experience.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <i class="fas fa-heart" style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px"></i>
+              <h3 style="margin-bottom: 10px">Warm, Local Hospitality</h3>
+              <p>
+                Our team takes pride in Filipino hospitality — attentive,
+                respectful and always focused on making you feel genuinely cared
+                for.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="card" style="padding: 30px; text-align: center">
+          <h3 style="margin-bottom: 10px">Our Commitment</h3>
+          <p style="max-width: 700px; margin: 0 auto 20px">
+            Luo City Spa Club is committed to providing a clean, safe and
+            relaxing environment for every guest. We follow strict hygiene
+            standards, use trusted spa products, and continuously train our
+            therapists to ensure you receive consistent, quality care.
+          </p>
+          <a href="services.html" class="btn btn-outline">Explore Our Services</a>
+        </div>
+      </section>
+
+      <section style="margin-top: 60px">
+        <div class="section-header" style="margin-top: 40px; margin-bottom: 30px">
+          <h2>Membership Cards</h2>
+          <p>Rewarding our most loyal guests with priority access and benefits</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-content" style="text-align: left">
+              <img
+                src="black_card.png"
+                alt="Black Card"
+                style="width: 100%; margin-bottom: 15px; border-radius: 6px"
+              />
+              <h3 style="margin-bottom: 8px">Black Card</h3>
+              <p style="font-weight: 600; margin-bottom: 12px">(Recharge PHP 100,000 and above)</p>
+              <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: #555">
+                <li>1. Priority for sea-view spa rooms</li>
+                <li>2. Priority for massage services</li>
+                <li>3. Complimentary access to VIP Tea Room</li>
+                <li>4. Recharge PHP 100,000 and over: +10% bonus credit</li>
+                <li>5. Recharge PHP 200,000 and over: +15% bonus credit</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-content" style="text-align: left">
+              <img
+                src="green_card.png"
+                alt="Green Card"
+                style="width: 100%; margin-bottom: 15px; border-radius: 6px"
+              />
+              <h3 style="margin-bottom: 8px">Green Card</h3>
+              <p style="font-weight: 600; margin-bottom: 12px">(Recharge PHP 50,000 and above)</p>
+              <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: #555">
+                <li>1. Priority massage scheduling</li>
+                <li>2. +8% bonus credit on every qualifying recharge</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-content" style="text-align: left">
+              <img
+                src="newer_card.png"
+                alt="Newer Card"
+                style="width: 100%; margin-bottom: 15px; border-radius: 6px"
+              />
+              <h3 style="margin-bottom: 8px">Newer Card</h3>
+              <p style="font-weight: 600; margin-bottom: 12px">(Recharge PHP 15,000 and above)</p>
+              <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: #555">
+                <li>1. Free parking during your spa visit</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Luo City Spa Club</h3>
+            <p>
+              Take a break from your busy routine. Relax, Recharge & Rejuvenate
+              at the Best Manila Spa Experience.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Esplanade Seaside Terminal,
+              MOA Complex, Pasay
+            </p>
+            <p><i class="fas fa-phone"></i> +63-999-816-8888</p>
+            <p><i class="fas fa-envelope"></i> info@luospa.com</p>
+          </div>
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="https://www.facebook.com/luocityspa.page"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://www.instagram.com/luocity.spa/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://www.tiktok.com/@luocity.spa"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Luo City Spa Club. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

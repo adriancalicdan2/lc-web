@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luo City Spa | Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  </head>
+  <body>
+    <div id="home-page-marker" style="display: none"></div>
+
+    <header>
+      <div class="container">
+        <nav>
+          <a href="index.html" class="logo"
+            ><img src="menu_logo_v2.png" alt="Luo City Spa"
+          /></a>
+          <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li class="nav-item-dropdown">
+              <a href="gallery.html">Gallery <i class="fas fa-chevron-down"></i></a>
+              <div class="dropdown-menu">
+                <a href="gallery.html">Photos/Videos</a>
+                <a href="social.html">Social Updates</a>
+              </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+              <a
+                href="admin.html"
+                style="
+                  border: 1px solid var(--primary);
+                  padding: 5px 15px;
+                  border-radius: 20px;
+                "
+                >Admin</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div id="hero-slideshow"></div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="container">
+        <h1>Rejuvenate and Unwind</h1>
+        <p>
+          Take a break from your busy routine. Relax, Recharge & Rejuvenate at
+          the Best Manila Spa Experience.
+        </p>
+        <a href="contact.html" class="btn">Inquire Now</a>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="stats-banner">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3>150+</h3>
+            <p>Trusted by Locals</p>
+          </div>
+          <div class="stat-item">
+            <h3>180°</h3>
+            <p>Ocean View Buffet</p>
+          </div>
+          <div class="stat-item">
+            <h3>4.8★</h3>
+            <p>Star Reviews</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top: 60px">
+      <div class="section-header">
+        <h2>Your Moment of Wellness</h2>
+        <p>Discover serenity through our premium services</p>
+      </div>
+      <div id="home-services-grid" class="grid-3 home-preview">
+        Loading Services...
+      </div>
+      <div class="see-more-container">
+        <a href="services.html" class="btn btn-outline">View All Packages</a>
+      </div>
+    </div>
+
+    <div
+      class="container"
+      style="background: var(--white); padding: 50px 20px; border-radius: 10px"
+    >
+      <div class="section-header"><h2>Latest from Gallery</h2></div>
+      <div id="gallery-grid" class="grid-3 home-preview">Loading...</div>
+      <div id="gallery-more-btn" class="see-more-container hide">
+        <a href="gallery.html" class="btn btn-outline">View Full Gallery</a>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top: 50px">
+      <div class="section-header"><h2>Latest Updates</h2></div>
+      <div id="social-grid" class="grid-3 home-preview">Loading...</div>
+      <div id="social-more-btn" class="see-more-container hide">
+        <a href="social.html" class="btn btn-outline">See More Posts</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Luo City Spa Club</h3>
+            <p>
+              Take a break from your busy routine. Relax, Recharge & Rejuvenate
+              at the Best Manila Spa Experience.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Esplanade Seaside Terminal,
+              MOA Complex, Pasay
+            </p>
+            <p><i class="fas fa-phone"></i> +63-999-816-8888</p>
+            <p><i class="fas fa-envelope"></i> info@luospa.com</p>
+          </div>
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="https://www.facebook.com/luocityspa.page"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://www.instagram.com/luocity.spa/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://www.tiktok.com/@luocity.spa"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Luo City Spa Club. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
