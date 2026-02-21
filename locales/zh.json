@@ -1,0 +1,216 @@
+{
+  "navigation": {
+    "home": "主页",
+    "about": "关于我们",
+    "services": "服务",
+    "gallery": "图库",
+    "photosVideos": "照片/视频",
+    "socialUpdates": "社交更新",
+    "contact": "联系我们",
+    "admin": "管理员"
+  },
+  "hero": {
+    "title": "恢复活力，放松身心",
+    "subtitle": "从忙碌的日常中抽身片刻。在菲律宾最好的水疗体验中放松、恢复活力、重获新生。",
+    "inquireNow": "立即咨询"
+  },
+  "stats": {
+    "clients": {
+      "number": "150+",
+      "label": "本地信任的客户"
+    },
+    "view": {
+      "number": "180°",
+      "label": "海景自助餐"
+    },
+    "rating": {
+      "number": "4.8★",
+      "label": "星级评分"
+    }
+  },
+  "home": {
+    "experience": {
+      "title": "体验罗城水疗",
+      "subtitle": "一览我们放松圣地的风采"
+    },
+    "wellness": {
+      "title": "您的健康时刻",
+      "subtitle": "通过我们优质的服务发现宁静"
+    },
+    "services": {
+      "loading": "正在加载服务...",
+      "viewAll": "查看所有套餐"
+    },
+    "gallery": {
+      "title": "最新图库",
+      "viewAll": "查看完整图库"
+    },
+    "updates": {
+      "title": "最新更新",
+      "seeMore": "查看更多帖子"
+    }
+  },
+  "about": {
+    "title": "关于罗城水疗俱乐部",
+    "subtitle": "在马尼拉湾畔放松、恢复活力、重获新生",
+    "story": {
+      "heading": "我们的故事",
+      "text": "罗城水疗俱乐部作为城市中心的静谧避风港而创立——它是一个专业人士、家庭和旅行者可以暂停、呼吸并与自己重新联系的地方。俯瞰MOA综合体内风景秀丽的滨海码头，我们的水疗中心将现代健康与马尼拉湾的宁静能量相融合。"
+    },
+    "philosophy": {
+      "text": "从您到达的那一刻起，我们的团队专注于一件事：您的舒适。每一项治疗、每一丝香气、每一种声音和每一个空间都经过精心设计，帮助您感到恢复、焕然一新，为接下来的一切做好准备。"
+    },
+    "calm": {
+      "heading": "城市中的宁静空间",
+      "text": "柔和的灯光、温暖的室内装饰和周到的服务共同营造出一个宁静的圣地，让您可以放慢脚步——即使只是几个小时。"
+    },
+    "virtualTour": {
+      "title": "虚拟导览",
+      "subtitle": "360°探索我们的设施"
+    },
+    "differences": {
+      "heading": "我们的与众不同之处",
+      "thoughtful": {
+        "title": "贴心治疗",
+        "text": "受过多种技术培训的专业治疗师"
+      },
+      "seaside": {
+        "title": "海滨位置",
+        "text": "俯瞰MOA综合体的马尼拉湾"
+      },
+      "hospitality": {
+        "title": "温暖的本地热情",
+        "text": "菲律宾风格的温暖和细致周到"
+      }
+    },
+    "commitment": {
+      "heading": "我们的承诺",
+      "text": "罗城水疗俱乐部致力于为每位客人提供清洁、安全和放松的环境。我们遵循严格的卫生标准，使用可信任的水疗产品，并不断培训我们的治疗师，以确保您获得始终如一的优质护理。"
+    },
+    "exploreServices": "浏览我们的服务",
+    "membership": {
+      "heading": "会员卡",
+      "subtitle": "奖励我们最忠诚的客人，享受优先权和福利",
+      "black": {
+        "name": "黑卡",
+        "recharge": "PHP 100,000 及以上"
+      },
+      "green": {
+        "name": "绿卡",
+        "recharge": "PHP 50,000 及以上"
+      },
+      "newer": {
+        "name": "银卡",
+        "recharge": "PHP 15,000 及以上"
+      }
+    },
+    "facilities": {
+      "title": "我们的设施",
+      "subtitle": "不仅仅是水疗中心 —— 一个完整的休闲目的地",
+      "entertainment": {
+        "title": "娱乐区",
+        "text": "与亲朋好友在我们充满活力的娱乐区放松身心。",
+        "ktv": "KTV 包房",
+        "billiards": "台球",
+        "arcade": "街机游戏",
+        "photobooth": "大头贴"
+      },
+      "private": {
+        "title": "私人 VIP 区域",
+        "text": "在我们专为完全隐私设计的私人区域体验独特的奢华。",
+        "dining": "私人餐饮和品茶区",
+        "massage": "私人按摩房",
+        "pool": "私人泳池区",
+        "ktv": "私人 KTV"
+      }
+    }
+  },
+  "services": {
+    "title": "水疗套餐",
+    "subtitle": "通过我们的专业治疗恢复活力和放松身心",
+    "loading": "正在加载服务...",
+    "bookNow": "立即预订"
+  },
+  "gallery": {
+    "title": "媒体图库",
+    "subtitle": "我们设施的照片和视频",
+    "photos": "照片",
+    "loadingPhotos": "正在加载照片...",
+    "videos": "视频",
+    "loadingVideos": "正在加载视频..."
+  },
+  "social": {
+    "title": "社交媒体更新",
+    "subtitle": "与我们保持联系",
+    "loading": "正在加载帖子..."
+  },
+  "contact": {
+    "visitUs": "访问我们",
+    "spa": {
+      "name": "罗城水疗俱乐部",
+      "address": "马尼拉湾滨海码头，海滨大道，MOA综合体帕赛，1300马尼拉",
+      "phone": "+63-999-816-8888",
+      "email": "info@luospa.com",
+      "hours": "每天下午3点至凌晨4点开放"
+    },
+    "inquireForm": "立即咨询",
+    "form": {
+      "name": "您的名字",
+      "email": "您的电子邮件地址",
+      "message": "我们如何帮助您？",
+      "submit": "提交"
+    }
+  },
+  "footer": {
+    "name": "罗城水疗俱乐部",
+    "tagline": "从忙碌的日常中抽身片刻。在菲律宾最好的水疗体验中放松、恢复活力、重获新生。",
+    "contact": {
+      "heading": "联系我们",
+      "address": "MOA综合体滨海码头，帕赛",
+      "email": "info@luospa.com"
+    },
+    "follow": {
+      "heading": "关注我们"
+    },
+    "copyright": "© 2025 罗城水疗俱乐部。版权所有。"
+  },
+  "buttons": {
+    "loading": "加载中...",
+    "view": "查看",
+    "add": "添加",
+    "save": "保存",
+    "delete": "删除",
+    "update": "更新",
+    "bookNow": "立即预订"
+  },
+  "admin": {
+    "forms": {
+      "title": "标题",
+      "description": "描述",
+      "imageUrl": "图片URL",
+      "videoUrl": "视频URL",
+      "link": "链接",
+      "recharge": "充值条件",
+      "benefits": "福利（每行一个）",
+      "date": "日期",
+      "content": "内容",
+      "select": "选择以编辑：",
+      "addNew": "添加新项目"
+    }
+  },
+  "chatbot": {
+    "title": "Luo City 助手",
+    "welcome": "你好！今天我能如何帮助你？",
+    "typing": "输入中...",
+    "placeholder": "提出问题...",
+    "error": "我现在连接有困难。请致电我们的前台 +63-999-816-8888。",
+    "systemContext": "你是Luo City Spa Club的AI助手。如需帮助，请致电+63-999-816-8888。"
+  },
+  "messages": {
+    "noServices": "尚未添加服务。",
+    "noPhotos": "尚无照片。",
+    "noVideos": "尚无视频。",
+    "noUpdates": "尚无更新。",
+    "noMemberships": "未找到会员资格。"
+  }
+}

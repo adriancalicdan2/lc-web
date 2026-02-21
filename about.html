@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luo City Spa | About</title>
+    <title>About | Luo City Spa</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/menu_logo_v2.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -16,32 +17,52 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <link rel="stylesheet" href="css/i18n-ui.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.7.6/i18next.min.js"></script>
+    <script src="js/i18n-init.js" defer></script>
   </head>
   <body>
     <header>
       <div class="container">
         <nav>
           <a href="index.html" class="logo"
-            ><img src="menu_logo_v2.png" alt="Luo City Spa"
+            ><img src="images/menu_logo_v2.png" alt="Luo City Spa"
           /></a>
           <div class="menu-toggle" id="mobile-menu">
             <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+            <li>
+              <a href="about.html" class="active" data-i18n="navigation.about"
+                >About</a
+              >
+            </li>
+            <li>
+              <a href="services.html" data-i18n="navigation.services"
+                >Services</a
+              >
+            </li>
             <li class="nav-item-dropdown">
-              <a href="gallery.html">Gallery <i class="fas fa-chevron-down"></i></a>
+              <a href="gallery.html" data-i18n="navigation.gallery"
+                >Gallery <i class="fas fa-chevron-down"></i
+              ></a>
               <div class="dropdown-menu">
-                <a href="gallery.html">Photos/Videos</a>
-                <a href="social.html">Social Updates</a>
+                <a href="gallery.html" data-i18n="navigation.photosVideos"
+                  >Photos/Videos</a
+                >
+                <a href="social.html" data-i18n="navigation.socialUpdates"
+                  >Social Updates</a
+                >
               </div>
             </li>
-            <li><a href="contact.html">Contact</a></li>
+            <li>
+              <a href="contact.html" data-i18n="navigation.contact">Contact</a>
+            </li>
             <li>
               <a
                 href="admin.html"
+                data-i18n="navigation.admin"
                 style="
                   border: 1px solid var(--primary);
                   padding: 5px 15px;
@@ -51,27 +72,69 @@
               >
             </li>
           </ul>
+          <div class="language-selector">
+            <button
+              class="lang-btn active"
+              data-lang="en"
+              onclick="changeLanguage('en')"
+            >
+              EN
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="zh"
+              onclick="changeLanguage('zh')"
+            >
+              中文
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="ko"
+              onclick="changeLanguage('ko')"
+            >
+              한국어
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="jp"
+              onclick="changeLanguage('jp')"
+            >
+              日本語
+            </button>
+          </div>
         </nav>
       </div>
     </header>
 
     <main class="container" style="padding-top: 40px; padding-bottom: 60px">
       <div class="section-header">
-        <h2>About Luo City Spa Club</h2>
-        <p>Relax, Recharge & Rejuvenate by the Manila Bay shoreline</p>
+        <h1 data-i18n="about.title">About Luo City Spa Club</h1>
+        <p data-i18n="about.subtitle">
+          Relax, Recharge & Rejuvenate by the Manila Bay shoreline
+        </p>
       </div>
 
-      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: center; margin-bottom: 60px;">
+      <section
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 40px;
+          align-items: center;
+          margin-bottom: 60px;
+        "
+      >
         <div>
-          <h3 style="margin-bottom: 15px">Our Story</h3>
-          <p style="margin-bottom: 15px">
-            Luo City Spa Club was created to be a quiet escape in the middle of the
-            city — a place where professionals, families, and travellers can pause,
-            breathe, and reconnect with themselves. Overlooking the scenic
-            Esplanade Seaside Terminal in the MOA Complex, our spa blends modern
-            wellness with the calming energy of Manila Bay.
+          <h3 style="margin-bottom: 15px" data-i18n="about.story.heading">
+            Our Story
+          </h3>
+          <p style="margin-bottom: 15px" data-i18n="about.story.text">
+            Luo City Spa Club was created to be a quiet escape in the middle of
+            the city — a place where professionals, families, and travellers can
+            pause, breathe, and reconnect with themselves. Overlooking the
+            scenic Esplanade Seaside Terminal in the MOA Complex, our spa blends
+            modern wellness with the calming energy of Manila Bay.
           </p>
-          <p>
+          <p data-i18n="about.philosophy.text">
             From the moment you arrive, our team is focused on one thing: your
             comfort. Every treatment, scent, sound and space is thoughtfully
             designed to help you feel restored, renewed and ready for what comes
@@ -86,11 +149,13 @@
               style="width: 100%; height: 260px; object-fit: cover"
             />
             <div class="card-content" style="text-align: left">
-              <h3 style="margin-bottom: 10px">A Calm Space in the City</h3>
-              <p>
-                Soft lighting, warm interiors and attentive service come together
-                to create a sanctuary where you can slow down — even just for a
-                few hours.
+              <h3 style="margin-bottom: 10px" data-i18n="about.calm.heading">
+                A Calm Space in the City
+              </h3>
+              <p data-i18n="about.calm.text">
+                Soft lighting, warm interiors and attentive service come
+                together to create a sanctuary where you can slow down — even
+                just for a few hours.
               </p>
             </div>
           </div>
@@ -98,24 +163,179 @@
       </section>
 
       <section style="margin-bottom: 60px">
-        <h3 style="text-align: center; margin-bottom: 30px">What Makes Us Different</h3>
+        <div class="section-header" style="margin-bottom: 30px">
+          <h2 data-i18n="about.virtualTour.title">Virtual Tour</h2>
+          <p data-i18n="about.virtualTour.subtitle">
+            Explore our facilities in 360°
+          </p>
+        </div>
+        <div
+          style="
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <iframe
+            src="https://vr.shinewonder.com/pano/page/publik/pklimit?inf=MA@FFDMLAMDMLMD@C&music=0"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section style="margin-bottom: 60px">
+        <div class="section-header" style="margin-bottom: 30px">
+          <h2 data-i18n="about.facilities.title">Our Facilities</h2>
+          <p data-i18n="about.facilities.subtitle">
+            More than just a spa — a complete leisure destination
+          </p>
+        </div>
         <div class="grid-3">
           <div class="card">
             <div class="card-content">
-              <i class="fas fa-spa" style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px"></i>
-              <h3 style="margin-bottom: 10px">Thoughtful Treatments</h3>
-              <p>
-                From classic massages to signature Luo City rituals, our offerings
-                are curated to ease tension, calm the mind and promote better
-                rest.
+              <i
+                class="fas fa-dice"
+                style="
+                  font-size: 2rem;
+                  color: var(--secondary);
+                  margin-bottom: 10px;
+                "
+              ></i>
+              <h3
+                style="margin-bottom: 10px"
+                data-i18n="about.facilities.entertainment.title"
+              >
+                Entertainment Area
+              </h3>
+              <p
+                data-i18n="about.facilities.entertainment.text"
+                style="margin-bottom: 15px"
+              >
+                Unwind with friends and family in our lively entertainment zone.
+              </p>
+              <ul
+                style="
+                  text-align: left;
+                  padding-left: 20px;
+                  color: #666;
+                  line-height: 1.8;
+                "
+              >
+                <li data-i18n="about.facilities.entertainment.ktv">
+                  KTV Rooms
+                </li>
+                <li data-i18n="about.facilities.entertainment.billiards">
+                  Billiards
+                </li>
+                <li data-i18n="about.facilities.entertainment.arcade">
+                  Arcade Machines
+                </li>
+                <li data-i18n="about.facilities.entertainment.photobooth">
+                  Photobooth
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <i
+                class="fas fa-crown"
+                style="
+                  font-size: 2rem;
+                  color: var(--secondary);
+                  margin-bottom: 10px;
+                "
+              ></i>
+              <h3
+                style="margin-bottom: 10px"
+                data-i18n="about.facilities.private.title"
+              >
+                Private VIP Area
+              </h3>
+              <p
+                data-i18n="about.facilities.private.text"
+                style="margin-bottom: 15px"
+              >
+                Experience exclusive luxury in our private areas designed for
+                total privacy.
+              </p>
+              <ul
+                style="
+                  text-align: left;
+                  padding-left: 20px;
+                  color: #666;
+                  line-height: 1.8;
+                "
+              >
+                <li data-i18n="about.facilities.private.dining">
+                  Private Dining & Tea Area
+                </li>
+                <li data-i18n="about.facilities.private.massage">
+                  Private Massage Room
+                </li>
+                <li data-i18n="about.facilities.private.pool">
+                  Private Pool Area
+                </li>
+                <li data-i18n="about.facilities.private.ktv">Private KTV</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-bottom: 60px">
+        <h3
+          style="text-align: center; margin-bottom: 30px"
+          data-i18n="about.differences.heading"
+        >
+          What Makes Us Different
+        </h3>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-content">
+              <i
+                class="fas fa-spa"
+                style="
+                  font-size: 2rem;
+                  color: var(--secondary);
+                  margin-bottom: 10px;
+                "
+              ></i>
+              <h3
+                style="margin-bottom: 10px"
+                data-i18n="about.differences.thoughtful.title"
+              >
+                Thoughtful Treatments
+              </h3>
+              <p data-i18n="about.differences.thoughtful.text">
+                From classic massages to signature Luo City rituals, our
+                offerings are curated to ease tension, calm the mind and promote
+                better rest.
               </p>
             </div>
           </div>
           <div class="card">
             <div class="card-content">
-              <i class="fas fa-water" style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px"></i>
-              <h3 style="margin-bottom: 10px">Seaside Location</h3>
-              <p>
+              <i
+                class="fas fa-water"
+                style="
+                  font-size: 2rem;
+                  color: var(--secondary);
+                  margin-bottom: 10px;
+                "
+              ></i>
+              <h3
+                style="margin-bottom: 10px"
+                data-i18n="about.differences.seaside.title"
+              >
+                Seaside Location
+              </h3>
+              <p data-i18n="about.differences.seaside.text">
                 Located at Esplanade Seaside Terminal, our spa lets you enjoy
                 gentle bay breezes and city lights — a unique backdrop to your
                 wellness experience.
@@ -124,9 +344,21 @@
           </div>
           <div class="card">
             <div class="card-content">
-              <i class="fas fa-heart" style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px"></i>
-              <h3 style="margin-bottom: 10px">Warm, Local Hospitality</h3>
-              <p>
+              <i
+                class="fas fa-heart"
+                style="
+                  font-size: 2rem;
+                  color: var(--secondary);
+                  margin-bottom: 10px;
+                "
+              ></i>
+              <h3
+                style="margin-bottom: 10px"
+                data-i18n="about.differences.hospitality.title"
+              >
+                Warm, Local Hospitality
+              </h3>
+              <p data-i18n="about.differences.hospitality.text">
                 Our team takes pride in Filipino hospitality — attentive,
                 respectful and always focused on making you feel genuinely cared
                 for.
@@ -138,73 +370,38 @@
 
       <section>
         <div class="card" style="padding: 30px; text-align: center">
-          <h3 style="margin-bottom: 10px">Our Commitment</h3>
-          <p style="max-width: 700px; margin: 0 auto 20px">
+          <h3 style="margin-bottom: 10px" data-i18n="about.commitment.heading">
+            Our Commitment
+          </h3>
+          <p
+            style="max-width: 700px; margin: 0 auto 20px"
+            data-i18n="about.commitment.text"
+          >
             Luo City Spa Club is committed to providing a clean, safe and
             relaxing environment for every guest. We follow strict hygiene
             standards, use trusted spa products, and continuously train our
             therapists to ensure you receive consistent, quality care.
           </p>
-          <a href="services.html" class="btn btn-outline">Explore Our Services</a>
+          <a
+            href="services.html"
+            class="btn btn-outline"
+            data-i18n="about.exploreServices"
+            >Explore Our Services</a
+          >
         </div>
       </section>
 
       <section style="margin-top: 60px">
-        <div class="section-header" style="margin-top: 40px; margin-bottom: 30px">
-          <h2>Membership Cards</h2>
-          <p>Rewarding our most loyal guests with priority access and benefits</p>
+        <div
+          class="section-header"
+          style="margin-top: 40px; margin-bottom: 30px"
+        >
+          <h2 data-i18n="about.membership.heading">Membership Cards</h2>
+          <p data-i18n="about.membership.subtitle">
+            Rewarding our most loyal guests with priority access and benefits
+          </p>
         </div>
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-content" style="text-align: left">
-              <img
-                src="black_card.png"
-                alt="Black Card"
-                style="width: 100%; margin-bottom: 15px; border-radius: 6px"
-              />
-              <h3 style="margin-bottom: 8px">Black Card</h3>
-              <p style="font-weight: 600; margin-bottom: 12px">(Recharge PHP 100,000 and above)</p>
-              <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: #555">
-                <li>1. Priority for sea-view spa rooms</li>
-                <li>2. Priority for massage services</li>
-                <li>3. Complimentary access to VIP Tea Room</li>
-                <li>4. Recharge PHP 100,000 and over: +10% bonus credit</li>
-                <li>5. Recharge PHP 200,000 and over: +15% bonus credit</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-content" style="text-align: left">
-              <img
-                src="green_card.png"
-                alt="Green Card"
-                style="width: 100%; margin-bottom: 15px; border-radius: 6px"
-              />
-              <h3 style="margin-bottom: 8px">Green Card</h3>
-              <p style="font-weight: 600; margin-bottom: 12px">(Recharge PHP 50,000 and above)</p>
-              <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: #555">
-                <li>1. Priority massage scheduling</li>
-                <li>2. +8% bonus credit on every qualifying recharge</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-content" style="text-align: left">
-              <img
-                src="newer_card.png"
-                alt="Newer Card"
-                style="width: 100%; margin-bottom: 15px; border-radius: 6px"
-              />
-              <h3 style="margin-bottom: 8px">Newer Card</h3>
-              <p style="font-weight: 600; margin-bottom: 12px">(Recharge PHP 15,000 and above)</p>
-              <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: #555">
-                <li>1. Free parking during your spa visit</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <div class="grid-3" id="membership-grid"></div>
       </section>
     </main>
 
@@ -212,23 +409,31 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>Luo City Spa Club</h3>
-            <p>
+            <h3 data-i18n="footer.name">Luo City Spa Club</h3>
+            <p data-i18n="footer.tagline">
               Take a break from your busy routine. Relax, Recharge & Rejuvenate
               at the Best Manila Spa Experience.
             </p>
           </div>
           <div class="footer-section">
-            <h3>Contact Us</h3>
+            <h3 data-i18n="footer.contact.heading">Contact Us</h3>
             <p>
-              <i class="fas fa-map-marker-alt"></i> Esplanade Seaside Terminal,
-              MOA Complex, Pasay
+              <i class="fas fa-map-marker-alt"></i>
+              <span data-i18n="footer.contact.address"
+                >Esplanade Seaside Terminal, MOA Complex, Pasay</span
+              >
             </p>
-            <p><i class="fas fa-phone"></i> +63-999-816-8888</p>
-            <p><i class="fas fa-envelope"></i> info@luospa.com</p>
+            <p>
+              <i class="fas fa-phone"></i>
+              <span data-i18n="footer.contact.phone">+63-999-816-8888</span>
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              <span data-i18n="footer.contact.email">info@luospa.com</span>
+            </p>
           </div>
           <div class="footer-section">
-            <h3>Follow Us</h3>
+            <h3 data-i18n="footer.follow.heading">Follow Us</h3>
             <div class="social-links">
               <a href="https://www.facebook.com/luocityspa.page"
                 ><i class="fab fa-facebook-f"></i
@@ -243,7 +448,9 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 Luo City Spa Club. All rights reserved.</p>
+          <p data-i18n="footer.copyright">
+            © 2025 Luo City Spa Club. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

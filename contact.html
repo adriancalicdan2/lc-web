@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luo City Spa | Contact</title>
+    <title>Contact | Luo City Spa</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/menu_logo_v2.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -13,32 +14,62 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <link rel="stylesheet" href="css/i18n-ui.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.7.6/i18next.min.js"></script>
+    <script src="js/i18n-init.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
   </head>
   <body>
     <header>
       <div class="container">
         <nav>
           <a href="index.html" class="logo"
-            ><img src="menu_logo_v2.png" alt="Luo City Spa"
+            ><img src="images/menu_logo_v2.png" alt="Luo City Spa"
           /></a>
           <div class="menu-toggle" id="mobile-menu">
             <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+            <li>
+              <a href="about.html" data-i18n="navigation.about">About</a>
+            </li>
+            <li>
+              <a href="services.html" data-i18n="navigation.services"
+                >Services</a
+              >
+            </li>
             <li class="nav-item-dropdown">
-              <a href="gallery.html">Gallery <i class="fas fa-chevron-down"></i></a>
+              <a href="gallery.html" data-i18n="navigation.gallery"
+                >Gallery <i class="fas fa-chevron-down"></i
+              ></a>
               <div class="dropdown-menu">
-                <a href="gallery.html">Photos/Videos</a>
-                <a href="social.html">Social Updates</a>
+                <a href="gallery.html" data-i18n="navigation.photosVideos"
+                  >Photos/Videos</a
+                >
+                <a href="social.html" data-i18n="navigation.socialUpdates"
+                  >Social Updates</a
+                >
               </div>
             </li>
-            <li><a href="contact.html" class="active">Contact</a></li>
+            <li>
+              <a
+                href="contact.html"
+                class="active"
+                data-i18n="navigation.contact"
+                >Contact</a
+              >
+            </li>
             <li>
               <a
                 href="admin.html"
+                data-i18n="navigation.admin"
                 style="
                   border: 1px solid var(--primary);
                   padding: 5px 15px;
@@ -48,12 +79,44 @@
               >
             </li>
           </ul>
+          <div class="language-selector">
+            <button
+              class="lang-btn active"
+              data-lang="en"
+              onclick="changeLanguage('en')"
+            >
+              EN
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="zh"
+              onclick="changeLanguage('zh')"
+            >
+              中文
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="ko"
+              onclick="changeLanguage('ko')"
+            >
+              한국어
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="jp"
+              onclick="changeLanguage('jp')"
+            >
+              日本語
+            </button>
+          </div>
         </nav>
       </div>
     </header>
 
     <div class="container" style="padding-top: 100px">
-      <div class="section-header"><h2>Visit Us</h2></div>
+      <div class="section-header">
+        <h1 data-i18n="contact.visitUs">Visit Us</h1>
+      </div>
       <div
         style="
           display: grid;
@@ -69,7 +132,10 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
           "
         >
-          <h3 style="margin-bottom: 20px; color: var(--primary)">
+          <h3
+            style="margin-bottom: 20px; color: var(--primary)"
+            data-i18n="contact.spa.name"
+          >
             Luo City Spa Club
           </h3>
           <p style="margin-bottom: 15px">
@@ -77,32 +143,34 @@
               class="fas fa-map-marker-alt"
               style="color: var(--secondary); width: 20px"
             ></i>
-            Esplanade Seaside Terminal, Seaside Blvd,<br />MOA Complex Pasay,
-            1300 Metro Manila
+            <span data-i18n="contact.spa.address"
+              >Esplanade Seaside Terminal, Seaside Blvd,<br />MOA Complex Pasay,
+              1300 Metro Manila</span
+            >
           </p>
           <p style="margin-bottom: 15px">
             <i
               class="fas fa-phone"
               style="color: var(--secondary); width: 20px"
             ></i>
-            +63-999-816-8888
+            <span data-i18n-html="contact.spa.phone">+63-999-816-8888</span>
           </p>
           <p style="margin-bottom: 15px">
             <i
               class="fas fa-envelope"
               style="color: var(--secondary); width: 20px"
             ></i>
-            info@luospa.com
+            <span data-i18n-html="contact.spa.email">info@luospa.com</span>
           </p>
           <p style="margin-bottom: 15px">
             <i
               class="fas fa-clock"
               style="color: var(--secondary); width: 20px"
             ></i>
-            Open Daily
+            <span data-i18n="contact.spa.hours">Open 3PM - 4AM Daily</span>
           </p>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.9961608754117!2d120.9790899!3d14.5422114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c94a5394d60b%3A0x6b04759491104e74!2sLuo%20City%20Spa%20Club!5e0!3m2!1sen!2sph!4v1678901234567!5m2!1sen!2sph"
+            src="https://maps.google.com/maps?q=Luo%20City%20Spa%20Club%20Pasay&t=&z=15&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="200"
             style="border: 0; border-radius: 5px; margin-top: 20px"
@@ -117,24 +185,41 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
           "
         >
-          <h3 style="margin-bottom: 20px">Inquire Now</h3>
-          <form class="admin-form" style="border: none">
+          <h3 style="margin-bottom: 20px" data-i18n="contact.inquireForm">
+            Inquire Now
+          </h3>
+          <form id="contact-form" class="admin-form" style="border: none">
+            <input type="hidden" name="time" id="contact-time" />
             <input
               type="text"
+              name="from_name"
+              data-i18n="[placeholder]contact.form.name"
               placeholder="Your Name"
               style="background: #f9f9f9"
+              required
             />
             <input
               type="email"
+              name="from_email"
+              data-i18n="[placeholder]contact.form.email"
               placeholder="Your Email Address"
               style="background: #f9f9f9"
+              required
             />
             <textarea
+              name="message"
               rows="4"
+              data-i18n="[placeholder]contact.form.message"
               placeholder="How can we help you?"
               style="background: #f9f9f9"
+              required
             ></textarea>
-            <button class="btn" type="button" style="width: 100%">
+            <button
+              class="btn"
+              type="submit"
+              style="width: 100%"
+              data-i18n="contact.form.submit"
+            >
               Submit
             </button>
           </form>
@@ -146,23 +231,31 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>Luo City Spa Club</h3>
-            <p>
+            <h3 data-i18n="footer.name">Luo City Spa Club</h3>
+            <p data-i18n="footer.tagline">
               Take a break from your busy routine. Relax, Recharge & Rejuvenate
               at the Best Manila Spa Experience.
             </p>
           </div>
           <div class="footer-section">
-            <h3>Contact Us</h3>
+            <h3 data-i18n="footer.contact.heading">Contact Us</h3>
             <p>
-              <i class="fas fa-map-marker-alt"></i> Esplanade Seaside Terminal,
-              MOA Complex, Pasay
+              <i class="fas fa-map-marker-alt"></i>
+              <span data-i18n="footer.contact.address"
+                >Esplanade Seaside Terminal, MOA Complex, Pasay</span
+              >
             </p>
-            <p><i class="fas fa-phone"></i> +63-999-816-8888</p>
-            <p><i class="fas fa-envelope"></i> info@luospa.com</p>
+            <p>
+              <i class="fas fa-phone"></i>
+              <span data-i18n="footer.contact.phone">+63-999-816-8888</span>
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              <span data-i18n="footer.contact.email">info@luospa.com</span>
+            </p>
           </div>
           <div class="footer-section">
-            <h3>Follow Us</h3>
+            <h3 data-i18n="footer.follow.heading">Follow Us</h3>
             <div class="social-links">
               <a href="https://www.facebook.com/luocityspa.page"
                 ><i class="fab fa-facebook-f"></i
@@ -177,7 +270,9 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 Luo City Spa Club. All rights reserved.</p>
+          <p data-i18n="footer.copyright">
+            © 2025 Luo City Spa Club. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

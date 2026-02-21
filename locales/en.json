@@ -1,0 +1,235 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "gallery": "Gallery",
+    "photosVideos": "Photos/Videos",
+    "socialUpdates": "Social Updates",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "hero": {
+    "title": "Rejuvenate and Unwind",
+    "subtitle": "Take a break from your busy routine. Relax, Recharge & Rejuvenate at the Best Manila Spa Experience.",
+    "inquireNow": "Inquire Now",
+    "alt": "Luo City Spa Promotion"
+  },
+  "stats": {
+    "clients": {
+      "number": "150+",
+      "label": "Trusted by Locals"
+    },
+    "view": {
+      "number": "180°",
+      "label": "Ocean View Buffet"
+    },
+    "rating": {
+      "number": "4.8★",
+      "label": "Star Reviews"
+    }
+  },
+  "home": {
+    "experience": {
+      "title": "Experience Luo City Spa",
+      "subtitle": "A glimpse into our sanctuary of relaxation"
+    },
+    "wellness": {
+      "title": "Your Moment of Wellness",
+      "subtitle": "Discover serenity through our premium services"
+    },
+    "services": {
+      "loading": "Loading Services...",
+      "viewAll": "View All Packages"
+    },
+    "gallery": {
+      "title": "Latest from Gallery",
+      "viewAll": "View Full Gallery"
+    },
+    "updates": {
+      "title": "Latest Updates",
+      "seeMore": "See More Posts"
+    }
+  },
+  "about": {
+    "title": "About Luo City Spa Club",
+    "subtitle": "Relax, Recharge & Rejuvenate by the Manila Bay shoreline",
+    "story": {
+      "heading": "Our Story",
+      "text": "Luo City Spa Club was created to be a quiet escape in the middle of the city — a place where professionals, families, and travellers can pause, breathe, and reconnect with themselves. Overlooking the scenic Esplanade Seaside Terminal in the MOA Complex, our spa blends modern wellness with the calming energy of Manila Bay."
+    },
+    "philosophy": {
+      "text": "From the moment you arrive, our team is focused on one thing: your comfort. Every treatment, scent, sound and space is thoughtfully designed to help you feel restored, renewed and ready for what comes next."
+    },
+    "calm": {
+      "heading": "A Calm Space in the City",
+      "text": "Soft lighting, warm interiors and attentive service come together to create a sanctuary where you can slow down — even just for a few hours."
+    },
+    "virtualTour": {
+      "title": "Virtual Tour",
+      "subtitle": "Explore our facilities in 360°"
+    },
+    "facilities": {
+      "title": "Our Facilities",
+      "subtitle": "More than just a spa — a complete leisure destination",
+      "entertainment": {
+        "title": "Entertainment Area",
+        "text": "Unwind with friends and family in our lively entertainment zone.",
+        "ktv": "KTV Rooms",
+        "billiards": "Billiards",
+        "arcade": "Arcade Machines",
+        "photobooth": "Photobooth"
+      },
+      "private": {
+        "title": "Private VIP Area",
+        "text": "Experience exclusive luxury in our private areas designed for total privacy.",
+        "dining": "Private Dining & Tea Area",
+        "massage": "Private Massage Room",
+        "pool": "Private Pool Area",
+        "ktv": "Private KTV"
+      }
+    },
+    "differences": {
+      "heading": "What Makes Us Different",
+      "thoughtful": {
+        "title": "Thoughtful Treatments",
+        "text": "Expert therapists trained in diverse techniques"
+      },
+      "seaside": {
+        "title": "Seaside Location",
+        "text": "Overlooking Manila Bay from MOA Complex"
+      },
+      "hospitality": {
+        "title": "Warm, Local Hospitality",
+        "text": "Filipino-inspired warmth and attention to detail"
+      }
+    },
+    "commitment": {
+      "heading": "Our Commitment",
+      "text": "Luo City Spa Club is committed to providing a clean, safe and relaxing environment for every guest. We follow strict hygiene standards, use trusted spa products, and continuously train our therapists to ensure you receive consistent, quality care."
+    },
+    "exploreServices": "Explore Our Services",
+    "membership": {
+      "heading": "Membership Cards",
+      "subtitle": "Rewarding our most loyal guests with priority access and benefits"
+    }
+  },
+  "services": {
+    "title": "Spa Packages",
+    "subtitle": "Revitalize your body and mind with our expert treatments",
+    "loading": "Loading Services...",
+    "bookNow": "Book Now"
+  },
+  "gallery": {
+    "title": "Media Gallery",
+    "subtitle": "Our facility in photos and videos",
+    "photos": "Photos",
+    "loadingPhotos": "Loading Photos...",
+    "videos": "Videos",
+    "youtube": "YouTube Videos",
+    "tiktok": "TikTok Videos",
+    "loadingVideos": "Loading Videos...",
+    "videoFallback": "Video",
+    "photoAlt": "Luo City Spa Gallery Image"
+  },
+  "social": {
+    "title": "Social Media Updates",
+    "subtitle": "Stay connected with us",
+    "loading": "Loading Posts...",
+    "brand": "Luo City Spa"
+  },
+  "contact": {
+    "visitUs": "Visit Us",
+    "spa": {
+      "name": "Luo City Spa Club",
+      "address": "Esplanade Seaside Terminal, Seaside Blvd, MOA Complex Pasay, 1300 Metro Manila",
+      "phone": "+63-999-816-8888",
+      "email": "info@luospa.com",
+      "hours": "Open 3PM - 4AM Daily"
+    },
+    "inquireForm": "Inquire Now",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email Address",
+      "message": "How can we help you?",
+      "submit": "Submit"
+    }
+  },
+  "footer": {
+    "name": "Luo City Spa Club",
+    "tagline": "Take a break from your busy routine. Relax, Recharge & Rejuvenate at the Best Manila Spa Experience.",
+    "contact": {
+      "heading": "Contact Us",
+      "address": "Esplanade Seaside Terminal, MOA Complex, Pasay",
+      "phone": "+63-999-816-8888",
+      "email": "info@luospa.com"
+    },
+    "follow": {
+      "heading": "Follow Us"
+    },
+    "copyright": "© 2025 Luo City Spa Club. All rights reserved."
+  },
+  "buttons": {
+    "loading": "Loading...",
+    "view": "View",
+    "add": "Add",
+    "save": "Save",
+    "delete": "Delete",
+    "update": "Update",
+    "bookNow": "Book Now"
+  },
+  "chatbot": {
+    "title": "Luo City Assistant",
+    "welcome": "Hello! How can I help you today?",
+    "typing": "Typing...",
+    "placeholder": "Ask a question...",
+    "error": "I am having trouble connecting right now. Please call our front desk at +63-999-816-8888.",
+<<<<<<< HEAD
+    "systemContext": "You are a helpful AI assistant for Luo City Spa Club. Please call +63-999-816-8888 for assistance.",
+    "tooltip": "Chat here!"
+=======
+    "systemContext": "You are a helpful AI assistant for Luo City Spa Club. Please call +63-999-816-8888 for assistance."
+>>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "login": {
+      "title": "Admin Login",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "error": "Invalid credentials"
+    },
+    "tabs": {
+      "seo": "SEO Settings",
+      "banners": "Home Page Banners",
+      "services": "Manage Services",
+      "gallery": "Manage Gallery",
+      "videos": "Manage Videos",
+      "social": "Manage Social",
+      "membership": "Manage Memberships",
+      "settings": "Settings",
+      "chatbot": "Chatbot Training"
+    },
+    "forms": {
+      "title": "Title",
+      "description": "Description",
+      "imageUrl": "Image URL",
+      "videoUrl": "Video URL",
+      "link": "Link",
+      "recharge": "Recharge Condition",
+      "benefits": "Benefits (one per line)",
+      "date": "Date",
+      "content": "Content",
+      "select": "Select to Edit:",
+      "addNew": "Add New Item"
+    }
+  },
+  "messages": {
+    "noServices": "No services added yet.",
+    "noPhotos": "No photos yet.",
+    "noVideos": "No videos yet.",
+    "noUpdates": "No updates yet.",
+    "noMemberships": "No memberships found."
+  }
+}

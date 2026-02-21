@@ -1,0 +1,155 @@
+/* Language Dropdown Styling */
+/* NOTE: This component is created via i18n-init.js.
+   It requires flag icons in 'images/flags/{lang_code}.svg' (e.g., us.svg, jp.svg) */
+
+.language-selector {
+  /* This is the old container, we keep it for the JS to find but it can be empty */
+  margin-right: 20px;
+}
+
+.language-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.lang-selected {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.language-dropdown.open .lang-selected,
+.language-dropdown:hover .lang-selected {
+  background: var(--light-green);
+  border-color: var(--secondary);
+}
+
+.lang-selected span {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+/* The little down arrow */
+.lang-selected i {
+  font-size: 0.7rem;
+  margin-left: 8px;
+  color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.language-dropdown.open .lang-selected i {
+  transform: rotate(180deg);
+}
+
+.lang-options {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  list-style: none;
+  padding: 5px;
+  min-width: 150px;
+  z-index: 1002;
+  border: 1px solid #eee;
+}
+
+.language-dropdown.open .lang-options {
+  display: block;
+  animation: fadeInDropdown 0.2s ease;
+}
+
+.lang-options li {
+  display: flex;
+  align-items: center;
+  position: relative; /* For checkmark */
+  padding: 10px 15px;
+  border-radius: 6px;
+  padding-right: 40px; /* Space for checkmark */
+  transition: background 0.2s ease;
+}
+
+.lang-options li:hover {
+  background: var(--light-green);
+}
+
+.lang-options li span {
+  color: var(--primary);
+  font-size: 0.9rem;
+}
+
+/* Style for the active language in the dropdown */
+.lang-options li.active span {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Add a checkmark to the active item */
+.lang-options li.active::after {
+  content: "✔"; /* Simple checkmark character */
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--secondary);
+}
+
+/* Hide old button styles */
+.lang-btn {
+  display: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .language-selector {
+    margin-right: 10px;
+  }
+}
+
+/* Animation for language change */
+@keyframes fadeInDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+body.language-changed {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Ensure language selector is visible in header */
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Accessibility - focus states */
+.lang-selected:focus-within {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+.language-dropdown:active .lang-selected {
+  transform: scale(0.98);
+}

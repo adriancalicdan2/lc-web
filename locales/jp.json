@@ -1,0 +1,236 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "about": "当スパについて",
+    "services": "サービス",
+    "gallery": "ギャラリー",
+    "photosVideos": "写真・動画",
+    "socialUpdates": "ソーシャル更新",
+    "contact": "お問い合わせ",
+    "admin": "管理画面"
+  },
+  "hero": {
+    "title": "リフレッシュ＆リラックス",
+    "subtitle": "忙しい日常から離れて一休み。マニラ最高のスパ体験で、リラックス、充電、そして若返りを。",
+    "inquireNow": "お問い合わせ"
+  },
+  "stats": {
+    "clients": {
+      "number": "150+",
+      "label": "地元での信頼"
+    },
+    "view": {
+      "number": "180°",
+      "label": "オーシャンビュー"
+    },
+    "rating": {
+      "number": "4.8★",
+      "label": "高評価レビュー"
+    }
+  },
+  "home": {
+    "experience": {
+      "title": "Luo City Spaを体験",
+      "subtitle": "究極のリラクゼーション空間へ"
+    },
+    "wellness": {
+      "title": "至福のウェルネス",
+      "subtitle": "プレミアムなサービスで静寂を発見"
+    },
+    "services": {
+      "loading": "サービスを読み込み中...",
+      "viewAll": "すべてのパッケージを見る"
+    },
+    "gallery": {
+      "title": "最新ギャラリー",
+      "viewAll": "ギャラリーをすべて見る"
+    },
+    "updates": {
+      "title": "最新情報",
+      "seeMore": "もっと見る"
+    }
+  },
+  "about": {
+    "title": "Luo City Spa Clubについて",
+    "subtitle": "マニラ湾の海岸線でリラックス、充電、若返りを",
+    "story": {
+      "heading": "私たちの物語",
+      "text": "Luo City Spa Clubは、都会の真ん中にある静かな隠れ家として作られました。専門家、家族、旅行者が立ち止まり、深呼吸し、自分自身と向き合える場所です。MOAコンプレックスのエスプラネード・シーサイド・ターミナルを見下ろす当スパは、現代的なウェルネスとマニラ湾の穏やかなエネルギーを融合させています。"
+    },
+    "philosophy": {
+      "text": "ご到着の瞬間から、私たちのチームはお客様の快適さだけに集中します。すべてのトリートメント、香り、音、空間は、お客様が回復し、リフレッシュし、次への活力を得られるように考え抜かれています。"
+    },
+    "calm": {
+      "heading": "都会の静寂な空間",
+      "text": "柔らかな照明、温かみのあるインテリア、行き届いたサービスが一体となり、数時間だけでもゆっくりと過ごせる聖域を作り出しています。"
+    },
+    "virtualTour": {
+      "title": "バーチャルツアー",
+      "subtitle": "360°で施設を探索"
+    },
+    "differences": {
+      "heading": "私たちの違い",
+      "thoughtful": {
+        "title": "心のこもったトリートメント",
+        "text": "多様な技術を習得した熟練セラピスト"
+      },
+      "seaside": {
+        "title": "海辺のロケーション",
+        "text": "MOAコンプレックスからマニラ湾を一望"
+      },
+      "hospitality": {
+        "title": "温かいおもてなし",
+        "text": "フィリピンならではの温かさと細部へのこだわり"
+      }
+    },
+    "commitment": {
+      "heading": "私たちの約束",
+      "text": "Luo City Spa Clubは、すべてのお客様に清潔で安全、そしてリラックスできる環境を提供することをお約束します。厳格な衛生基準に従い、信頼できるスパ製品を使用し、一貫した質の高いケアを提供するためにセラピストのトレーニングを継続的に行っています。"
+    },
+    "exploreServices": "サービスを探す",
+    "membership": {
+      "heading": "メンバーシップカード",
+      "subtitle": "忠実なお客様へ、優先アクセスと特典をご用意",
+      "black": {
+        "name": "ブラックカード",
+        "recharge": "チャージ PHP 100,000 以上"
+      },
+      "green": {
+        "name": "グリーンカード",
+        "recharge": "チャージ PHP 50,000 以上"
+      },
+      "newer": {
+        "name": "シルバーカード",
+        "recharge": "チャージ PHP 15,000 以上"
+      }
+    },
+    "facilities": {
+      "title": "施設案内",
+      "subtitle": "スパだけではない、総合レジャー施設",
+      "entertainment": {
+        "title": "エンターテイメントエリア",
+        "text": "活気あるエンターテイメントゾーンで、友人や家族とリラックスしてください。",
+        "ktv": "カラオケルーム",
+        "billiards": "ビリヤード",
+        "arcade": "ゲームセンター",
+        "photobooth": "フォトブース"
+      },
+      "private": {
+        "title": "プライベートVIPエリア",
+        "text": "完全なプライバシーのために設計されたプライベートエリアで、特別な贅沢を体験してください。",
+        "dining": "プライベートダイニング＆ティーエリア",
+        "massage": "プライベートマッサージルーム",
+        "pool": "プライベートプールエリア",
+        "ktv": "プライベートカラオケ"
+      }
+    }
+  },
+  "services": {
+    "title": "スパパッケージ",
+    "subtitle": "専門的なトリートメントで心身を活性化",
+    "loading": "サービスを読み込み中...",
+    "bookNow": "今すぐ予約"
+  },
+  "gallery": {
+    "title": "メディアギャラリー",
+    "subtitle": "写真と動画で見る当施設",
+    "photos": "写真",
+    "loadingPhotos": "写真を読み込み中...",
+    "videos": "動画",
+    "loadingVideos": "動画を読み込み中...",
+    "videoFallback": "動画"
+  },
+  "social": {
+    "title": "ソーシャルメディア更新",
+    "subtitle": "最新情報をチェック",
+    "loading": "投稿を読み込み中...",
+    "brand": "Luo City Spa"
+  },
+  "contact": {
+    "visitUs": "アクセス",
+    "spa": {
+      "name": "Luo City Spa Club",
+      "address": "Esplanade Seaside Terminal, Seaside Blvd, MOA Complex Pasay, 1300 Metro Manila",
+      "phone": "+63-999-816-8888",
+      "email": "info@luospa.com",
+      "hours": "毎日 午後3時〜午前4時"
+    },
+    "inquireForm": "お問い合わせ",
+    "form": {
+      "name": "お名前",
+      "email": "メールアドレス",
+      "message": "ご用件をお聞かせください",
+      "submit": "送信"
+    }
+  },
+  "footer": {
+    "name": "Luo City Spa Club",
+    "tagline": "忙しい日常から離れて一休み。マニラ最高のスパ体験で、リラックス、充電、そして若返りを。",
+    "contact": {
+      "heading": "お問い合わせ",
+      "address": "Esplanade Seaside Terminal, MOA Complex, Pasay",
+      "phone": "+63-999-816-8888",
+      "email": "info@luospa.com"
+    },
+    "follow": {
+      "heading": "フォローする"
+    },
+    "copyright": "© 2025 Luo City Spa Club. All rights reserved."
+  },
+  "buttons": {
+    "loading": "読み込み中...",
+    "view": "見る",
+    "add": "追加",
+    "save": "保存",
+    "delete": "削除",
+    "update": "更新",
+    "bookNow": "今すぐ予約"
+  },
+  "chatbot": {
+    "title": "Luo City アシスタント",
+    "welcome": "こんにちは！今日はどのようなご用件でしょうか？",
+    "typing": "入力中...",
+    "placeholder": "質問を入力してください...",
+    "error": "現在接続に問題が発生しています。フロントデスク (+63-999-816-8888) までお電話ください。",
+    "systemContext": "あなたはLuo City Spa ClubのAIアシスタントです。サポートが必要な場合は+63-999-816-8888までお電話ください。"
+  },
+  "admin": {
+    "title": "管理ダッシュボード",
+    "login": {
+      "title": "管理者ログイン",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "submit": "ログイン",
+      "error": "認証情報が無効です"
+    },
+    "logout": "ログアウト",
+    "tabs": {
+      "seo": "SEO設定",
+      "banners": "ホームページバナー",
+      "services": "サービス管理",
+      "gallery": "写真を追加",
+      "videos": "動画を追加",
+      "social": "ソーシャル投稿を追加",
+      "membership": "メンバーシップ管理",
+      "chatbot": "チャットボット・トレーニング"
+    },
+    "forms": {
+      "title": "タイトル",
+      "description": "説明",
+      "imageUrl": "画像URL",
+      "videoUrl": "動画URL",
+      "link": "リンク",
+      "recharge": "チャージ条件",
+      "benefits": "特典 (1行に1つ)",
+      "date": "日付",
+      "content": "内容"
+    }
+  },
+  "messages": {
+    "noServices": "サービスはまだ追加されていません。",
+    "noPhotos": "写真はまだありません。",
+    "noVideos": "動画はまだありません。",
+    "noUpdates": "更新はまだありません。",
+    "noMemberships": "メンバーシップは見つかりませんでした。"
+  }
+}

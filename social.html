@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luo City Spa | Social</title>
+    <title>Social | Luo City Spa</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/menu_logo_v2.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -16,29 +17,47 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <link rel="stylesheet" href="css/i18n-ui.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.7.6/i18next.min.js"></script>
+    <script src="js/i18n-init.js" defer></script>
   </head>
   <body>
     <header>
       <div class="container">
         <nav>
           <a href="index.html" class="logo"
-            ><img src="menu_logo_v2.png" alt="Luo City Spa"
+            ><img src="images/menu_logo_v2.png" alt="Luo City Spa"
           /></a>
           <div class="menu-toggle" id="mobile-menu">
             <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html" data-i18n="navigation.home">Home</a></li>
+            <li><a href="about.html" data-i18n="navigation.about">About</a></li>
+            <li>
+              <a href="services.html" data-i18n="navigation.services"
+                >Services</a
+              >
+            </li>
             <li class="nav-item-dropdown">
-              <a href="gallery.html">Gallery <i class="fas fa-chevron-down"></i></a>
+              <a href="gallery.html" data-i18n="navigation.gallery"
+                >Gallery <i class="fas fa-chevron-down"></i
+              ></a>
               <div class="dropdown-menu">
-                <a href="gallery.html">Photos/Videos</a>
-                <a href="social.html" class="active">Social Updates</a>
+                <a href="gallery.html" data-i18n="navigation.photosVideos"
+                  >Photos/Videos</a
+                >
+                <a
+                  href="social.html"
+                  class="active"
+                  data-i18n="navigation.socialUpdates"
+                  >Social Updates</a
+                >
               </div>
             </li>
-            <li><a href="contact.html">Contact</a></li>
+            <li>
+              <a href="contact.html" data-i18n="navigation.contact">Contact</a>
+            </li>
             <li>
               <a
                 href="admin.html"
@@ -47,43 +66,84 @@
                   padding: 5px 15px;
                   border-radius: 20px;
                 "
+                data-i18n="navigation.admin"
                 >Admin</a
               >
             </li>
           </ul>
+          <div class="language-selector">
+            <button
+              class="lang-btn active"
+              data-lang="en"
+              onclick="changeLanguage('en')"
+            >
+              EN
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="zh"
+              onclick="changeLanguage('zh')"
+            >
+              中文
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="ko"
+              onclick="changeLanguage('ko')"
+            >
+              한국어
+            </button>
+            <button
+              class="lang-btn"
+              data-lang="jp"
+              onclick="changeLanguage('jp')"
+            >
+              日本語
+            </button>
+          </div>
         </nav>
       </div>
     </header>
 
     <div class="container" style="padding-top: 100px">
       <div class="section-header">
-        <h2>Social Media Updates</h2>
-        <p>Stay connected with us</p>
+        <h1 data-i18n="social.title">Social Media Updates</h1>
+        <p data-i18n="social.subtitle">Stay connected with us</p>
       </div>
-      <div id="social-grid" class="grid-3">Loading Posts...</div>
+      <div id="social-grid" class="grid-3" data-i18n="social.loading">
+        Loading Posts...
+      </div>
     </div>
 
     <footer>
       <div class="container">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>Luo City Spa Club</h3>
-            <p>
+            <h3 data-i18n="footer.name">Luo City Spa Club</h3>
+            <p data-i18n="footer.tagline">
               Take a break from your busy routine. Relax, Recharge & Rejuvenate
               at the Best Manila Spa Experience.
             </p>
           </div>
           <div class="footer-section">
-            <h3>Contact Us</h3>
+            <h3 data-i18n="footer.contact.heading">Contact Us</h3>
             <p>
-              <i class="fas fa-map-marker-alt"></i> Esplanade Seaside Terminal,
-              MOA Complex, Pasay
+              <i class="fas fa-map-marker-alt"></i>
+              <span data-i18n="footer.contact.address"
+                >Esplanade Seaside Terminal, MOA Complex, Pasay</span
+              >
             </p>
-            <p><i class="fas fa-phone"></i> +63-999-816-8888</p>
-            <p><i class="fas fa-envelope"></i> info@luospa.com</p>
+            <p>
+              <i class="fas fa-phone"></i>
+              <span data-i18n="footer.contact.phone">+63-999-816-8888</span>
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              <span data-i18n="footer.contact.email">info@luospa.com</span>
+            </p>
           </div>
           <div class="footer-section">
-            <h3>Follow Us</h3>
+            <h3 data-i18n="footer.follow.heading">Follow Us</h3>
             <div class="social-links">
               <a href="https://www.facebook.com/luocityspa.page"
                 ><i class="fab fa-facebook-f"></i
@@ -98,7 +158,9 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 Luo City Spa Club. All rights reserved.</p>
+          <p data-i18n="footer.copyright">
+            © 2025 Luo City Spa Club. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

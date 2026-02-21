@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Luo City Spa | Admin</title>
+    <title>Admin | Luo City Spa</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/menu_logo_v2.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -23,7 +24,7 @@
       <div class="container">
         <nav>
           <a href="index.html" class="logo"
-            ><img src="menu_logo_v2.png" alt="Luo City Spa"
+            ><img src="images/menu_logo_v2.png" alt="Luo City Spa"
           /></a>
           <div
             class="menu-toggle"
@@ -81,7 +82,7 @@
         <div style="margin-top: 10px; font-size: 0.8rem; color: #888">
           Use "Create User" below first if new.
         </div>
-        <div
+        <!-- <div
           style="
             margin-top: 20px;
             border-top: 1px solid #eee;
@@ -95,7 +96,7 @@
           >
             Create User
           </button>
-        </div>
+        </div> -->
       </div>
 
       <div id="dashboard-box" class="hide">
@@ -105,15 +106,57 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
           "
         >
-          <h2>Content Manager</h2>
+          <h2 style="margin: 0">Content Manager</h2>
           <button class="btn" style="background: #333" onclick="logout()">
             Logout
           </button>
         </div>
 
-        <div class="admin-panel">
+        <!-- NEW: Main filter dropdown -->
+        <div class="admin-main-filter">
+          <label for="admin-section-select">Choose a section to manage:</label>
+          <select id="admin-section-select">
+            <option value="seo-panel">SEO Settings</option>
+            <option value="banners-panel">Home Page Banners</option>
+            <option value="services-panel">Service Packages</option>
+            <option value="gallery-panel">Gallery Photos</option>
+            <option value="videos-panel">Videos</option>
+            <option value="social-panel">Social Posts</option>
+            <option value="memberships-panel">Memberships</option>
+            <option value="chatbot-panel">Chatbot Training</option>
+          </select>
+        </div>
+
+        <div id="seo-panel" class="admin-panel admin-content-section">
+          <h3><i class="fas fa-search"></i> SEO Settings</h3>
+          <div class="admin-form">
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px">
+              Update site-wide title and meta tags for search engines.
+            </p>
+            <input
+              type="text"
+              id="seo-title"
+              placeholder="Website Title (e.g. Luo City Spa Club)"
+            />
+            <textarea
+              id="seo-desc"
+              placeholder="Meta Description (Recommended: 150-160 chars)"
+              rows="3"
+            ></textarea>
+            <input
+              type="text"
+              id="seo-keywords"
+              placeholder="Keywords (comma separated)"
+            />
+            <button class="btn" onclick="saveSeo()">Save SEO Settings</button>
+          </div>
+        </div>
+
+        <div id="banners-panel" class="admin-panel admin-content-section">
           <h3><i class="fas fa-images"></i> Home Page Banners</h3>
           <div class="admin-form">
             <input type="text" id="banner-url" placeholder="Banner Image URL" />
@@ -124,19 +167,163 @@
           <div id="admin-banner-list"></div>
         </div>
 
-        <div class="admin-panel">
+        <div id="services-panel" class="admin-panel admin-content-section">
           <h3><i class="fas fa-spa"></i> Add Service Package</h3>
           <div class="admin-form">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-bottom: 15px;
+              "
+            >
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Service Name - 🇬🇧 English</label
+                >
+                <input
+                  type="text"
+                  id="serv-title-en"
+                  placeholder="e.g. Swedish Massage"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Service Name - 🇨🇳 Chinese</label
+                >
+                <input
+                  type="text"
+                  id="serv-title-zh"
+                  placeholder="e.g. 瑞典按摩"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Service Name - 🇯🇵 Japanese</label
+                >
+                <input
+                  type="text"
+                  id="serv-title-jp"
+                  placeholder="e.g. スウェディッシュマッサージ"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Service Name - 🇰🇷 Korean</label
+                >
+                <input
+                  type="text"
+                  id="serv-title-ko"
+                  placeholder="e.g. 스웨디시 마사지"
+                />
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-bottom: 15px;
+              "
+            >
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Description - 🇬🇧 English</label
+                >
+                <textarea
+                  id="serv-desc-en"
+                  placeholder="60 mins relaxing oil massage..."
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Description - 🇨🇳 Chinese</label
+                >
+                <textarea
+                  id="serv-desc-zh"
+                  placeholder="60分钟放松油按摩..."
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Description - 🇯🇵 Japanese</label
+                >
+                <textarea
+                  id="serv-desc-jp"
+                  placeholder="60分間のリラックスオイルマッサージ..."
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Description - 🇰🇷 Korean</label
+                >
+                <textarea
+                  id="serv-desc-ko"
+                  placeholder="60분의 편안한 오일 마사지..."
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+
             <input
               type="text"
-              id="serv-title"
-              placeholder="Service Name (e.g. Swedish Massage)"
+              id="serv-img"
+              placeholder="Image URL"
+              style="margin-bottom: 15px"
             />
-            <textarea
-              id="serv-desc"
-              placeholder="Description (e.g. 60 mins relaxing oil massage...)"
-            ></textarea>
-            <input type="text" id="serv-img" placeholder="Image URL" />
             <button class="btn" onclick="addContent('service')">
               Add Service
             </button>
@@ -144,7 +331,7 @@
           <div id="admin-service-list"></div>
         </div>
 
-        <div class="admin-panel">
+        <div id="gallery-panel" class="admin-panel admin-content-section">
           <h3><i class="fas fa-images"></i> Add Photo</h3>
           <div class="admin-form">
             <input type="text" id="img-url" placeholder="Image URL" />
@@ -155,45 +342,401 @@
           <div id="admin-gallery-list"></div>
         </div>
 
-        <div class="admin-panel">
+        <div id="videos-panel" class="admin-panel admin-content-section">
           <h3><i class="fas fa-video"></i> Add Video</h3>
           <div class="admin-form">
             <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px">
-              Enter YouTube Embed URL (e.g. https://www.youtube.com/embed/...)
+              Enter YouTube or TikTok URL (e.g.
+              https://www.tiktok.com/@user/video/...)
             </p>
-            <input type="text" id="vid-url" placeholder="YouTube URL" />
             <input
               type="text"
-              id="vid-title"
-              placeholder="Video Title"
-              style="margin-top: 10px"
+              id="vid-url"
+              placeholder="Video URL (YouTube or TikTok)"
+              style="margin-bottom: 15px"
             />
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-bottom: 15px;
+              "
+            >
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Video Title - 🇬🇧 English</label
+                >
+                <input
+                  type="text"
+                  id="vid-title-en"
+                  placeholder="e.g. Spa Tour"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Video Title - 🇨🇳 Chinese</label
+                >
+                <input
+                  type="text"
+                  id="vid-title-zh"
+                  placeholder="e.g. 水疗中心之旅"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Video Title - 🇯🇵 Japanese</label
+                >
+                <input
+                  type="text"
+                  id="vid-title-jp"
+                  placeholder="e.g. スパツアー"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Video Title - 🇰🇷 Korean</label
+                >
+                <input
+                  type="text"
+                  id="vid-title-ko"
+                  placeholder="e.g. 스파 투어"
+                />
+              </div>
+            </div>
+
             <button class="btn" onclick="addContent('video')">Add Video</button>
           </div>
           <div id="admin-video-list"></div>
         </div>
 
-        <div class="admin-panel">
+        <div id="social-panel" class="admin-panel admin-content-section">
           <h3><i class="fas fa-share-alt"></i> Add Social Post</h3>
           <div class="admin-form">
-            <textarea
-              id="post-content"
-              placeholder="Post content..."
-            ></textarea>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-bottom: 15px;
+              "
+            >
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Post Content - 🇬🇧 English</label
+                >
+                <textarea
+                  id="post-content-en"
+                  placeholder="Post content..."
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Post Content - 🇨🇳 Chinese</label
+                >
+                <textarea
+                  id="post-content-zh"
+                  placeholder="帖子内容..."
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Post Content - 🇯🇵 Japanese</label
+                >
+                <textarea
+                  id="post-content-jp"
+                  placeholder="投稿内容..."
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Post Content - 🇰🇷 Korean</label
+                >
+                <textarea
+                  id="post-content-ko"
+                  placeholder="게시물 내용..."
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+
             <input
               type="text"
               id="post-img"
               placeholder="Image URL (Optional)"
+              style="margin-bottom: 15px"
             />
             <input
               type="text"
               id="post-link"
               placeholder="Post Link (e.g. https://facebook.com/post/123)"
-              style="border-left: 3px solid var(--secondary)"
+              style="
+                border-left: 3px solid var(--secondary);
+                margin-bottom: 15px;
+              "
             />
             <button class="btn" onclick="addContent('social')">Add Post</button>
           </div>
           <div id="admin-social-list"></div>
+        </div>
+
+        <div id="memberships-panel" class="admin-panel admin-content-section">
+          <h3>
+            <i class="fas fa-id-card"></i>
+            <span data-i18n="admin.tabs.membership">Manage Memberships</span>
+          </h3>
+          <div class="admin-form">
+            <select
+              id="mem-name"
+              onchange="loadMembershipDetails()"
+              style="
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background: white;
+                margin-bottom: 15px;
+              "
+            >
+              <option value="black">Black Card</option>
+              <option value="green">Green Card</option>
+              <option value="newer">Newer Card</option>
+            </select>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-bottom: 15px;
+              "
+            >
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Recharge Amount - 🇬🇧 English</label
+                >
+                <input
+                  type="text"
+                  id="mem-recharge-en"
+                  placeholder="e.g. PHP 100,000+"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Recharge Amount - 🇨🇳 Chinese</label
+                >
+                <input
+                  type="text"
+                  id="mem-recharge-zh"
+                  placeholder="e.g. PHP 100,000+"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Recharge Amount - 🇯🇵 Japanese</label
+                >
+                <input
+                  type="text"
+                  id="mem-recharge-jp"
+                  placeholder="e.g. PHP 100,000+"
+                />
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Recharge Amount - 🇰🇷 Korean</label
+                >
+                <input
+                  type="text"
+                  id="mem-recharge-ko"
+                  placeholder="e.g. PHP 100,000+"
+                />
+              </div>
+            </div>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-bottom: 15px;
+              "
+            >
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Benefits - 🇬🇧 English</label
+                >
+                <textarea
+                  id="mem-benefits-en"
+                  placeholder="Benefits (One per line)"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Benefits - 🇨🇳 Chinese</label
+                >
+                <textarea
+                  id="mem-benefits-zh"
+                  placeholder="福利 (每行一个)"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Benefits - 🇯🇵 Japanese</label
+                >
+                <textarea
+                  id="mem-benefits-jp"
+                  placeholder="特典 (1行に1つ)"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  style="
+                    font-weight: bold;
+                    display: block;
+                    margin-bottom: 5px;
+                    color: #333;
+                  "
+                  >Benefits - 🇰🇷 Korean</label
+                >
+                <textarea
+                  id="mem-benefits-ko"
+                  placeholder="혜택 (한 줄에 하나)"
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+
+            <button
+              class="btn"
+              onclick="addContent('membership')"
+              data-i18n="buttons.update"
+            >
+              Update Membership
+            </button>
+          </div>
+          <div id="admin-membership-list"></div>
+        </div>
+
+        <div id="chatbot-panel" class="admin-panel admin-content-section">
+          <h3><i class="fas fa-robot"></i> Chatbot Training Prompt</h3>
+          <div class="admin-form">
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px">
+              Write a detailed paragraph describing your spa. Include everything
+              you want the AI to know: services, prices, membership cards,
+              benefits, hours, contact info, facilities, amenities, dining,
+              policies, etc. The chatbot will use this to answer customer
+              questions. The more detailed, the better!
+            </p>
+            <textarea
+              id="chatbot-prompt"
+              placeholder="You are the AI assistant for Luo City Spa Club. Share details about your services, prices, membership benefits, hours, location, contact info, facilities, and any policies. Example: You are the AI assistant for Luo City Spa Club in Pasay. We offer massage services including Swedish, Chinese, Head Massage, Foot Massage, and more. Our Black Card costs PHP 100,000 and includes unlimited discounts, free WiFi, and priority booking..."
+              rows="15"
+              style="
+                font-family: &quot;Lato&quot;, sans-serif;
+                padding: 15px;
+                line-height: 1.5;
+              "
+            ></textarea>
+            <button class="btn" onclick="saveChatbotPrompt()">
+              Save & Train Chatbot
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -217,6 +760,26 @@
           document.getElementById("auth-box").classList.add("hide");
           document.getElementById("dashboard-box").classList.remove("hide");
           loadAdminData();
+
+          // NEW: Admin page section filter logic
+          const sectionSelect = document.getElementById("admin-section-select");
+          const contentSections = document.querySelectorAll(
+            ".admin-content-section",
+          );
+
+          function showAdminSection(sectionId) {
+            contentSections.forEach((section) => {
+              section.style.display =
+                section.id === sectionId ? "block" : "none";
+            });
+          }
+
+          if (sectionSelect && contentSections.length > 0) {
+            showAdminSection(sectionSelect.value); // Show default section
+            sectionSelect.addEventListener("change", (e) =>
+              showAdminSection(e.target.value),
+            );
+          }
         } else {
           document.getElementById("auth-box").classList.remove("hide");
           document.getElementById("dashboard-box").classList.add("hide");
@@ -230,16 +793,83 @@
           .signInWithEmailAndPassword(e, p)
           .catch((err) => alert(err.message));
       }
-      function createUser() {
-        const e = document.getElementById("login-email").value;
-        const p = document.getElementById("login-pass").value;
-        auth
-          .createUserWithEmailAndPassword(e, p)
-          .then(() => alert("Created! Login now."))
-          .catch((err) => alert(err.message));
-      }
       function logout() {
         auth.signOut();
+      }
+
+      function loadMembershipDetails() {
+        const key = document.getElementById("mem-name").value;
+        db.ref("memberships/" + key).once("value", (snap) => {
+          const val = snap.val();
+          if (val) {
+            // Load recharge amounts for all languages
+            document.getElementById("mem-recharge-en").value =
+              val.recharge_en || "";
+            document.getElementById("mem-recharge-zh").value =
+              val.recharge_zh || "";
+            document.getElementById("mem-recharge-jp").value =
+              val.recharge_jp || "";
+            document.getElementById("mem-recharge-ko").value =
+              val.recharge_ko || "";
+
+            // Load benefits for all languages
+            document.getElementById("mem-benefits-en").value =
+              val.benefits_en || "";
+            document.getElementById("mem-benefits-zh").value =
+              val.benefits_zh || "";
+            document.getElementById("mem-benefits-jp").value =
+              val.benefits_jp || "";
+            document.getElementById("mem-benefits-ko").value =
+              val.benefits_ko || "";
+          } else {
+            // Clear all fields if no data
+            document.getElementById("mem-recharge-en").value = "";
+            document.getElementById("mem-recharge-zh").value = "";
+            document.getElementById("mem-recharge-jp").value = "";
+            document.getElementById("mem-recharge-ko").value = "";
+            document.getElementById("mem-benefits-en").value = "";
+            document.getElementById("mem-benefits-zh").value = "";
+            document.getElementById("mem-benefits-jp").value = "";
+            document.getElementById("mem-benefits-ko").value = "";
+          }
+        });
+      }
+
+      function saveSeo() {
+        const title = document.getElementById("seo-title").value;
+        const desc = document.getElementById("seo-desc").value;
+        const keywords = document.getElementById("seo-keywords").value;
+
+        db.ref("settings/seo").set(
+          {
+            title: title,
+            description: desc,
+            keywords: keywords,
+          },
+          (error) => {
+            if (error) alert("Error saving SEO settings: " + error.message);
+            else alert("SEO Settings Saved!");
+          },
+        );
+      }
+
+      function saveChatbotPrompt() {
+        const prompt = document.getElementById("chatbot-prompt").value;
+        if (!prompt) {
+          alert("Please write your chatbot training prompt!");
+          return;
+        }
+
+        db.ref("settings/chatbot").set(
+          {
+            prompt: prompt,
+            updated: Date.now(),
+          },
+          (error) => {
+            if (error) alert("Error saving chatbot training: " + error.message);
+            else alert("Chatbot Training Saved! Changes will apply instantly.");
+          },
+        );
       }
 
       function addContent(type) {
@@ -254,14 +884,46 @@
           refName = "banners";
           document.getElementById("banner-url").value = "";
         } else if (type === "service") {
-          const title = document.getElementById("serv-title").value;
-          const desc = document.getElementById("serv-desc").value;
+          // Collect all 4 languages
+          const titleEn = document.getElementById("serv-title-en").value;
+          const titleZh = document.getElementById("serv-title-zh").value;
+          const titleJp = document.getElementById("serv-title-jp").value;
+          const titleKo = document.getElementById("serv-title-ko").value;
+
+          const descEn = document.getElementById("serv-desc-en").value;
+          const descZh = document.getElementById("serv-desc-zh").value;
+          const descJp = document.getElementById("serv-desc-jp").value;
+          const descKo = document.getElementById("serv-desc-ko").value;
+
           const image = document.getElementById("serv-img").value;
-          if (!title) return;
-          data = { title, description: desc, image, date: Date.now() };
+
+          if (!titleEn) {
+            alert("Please enter service name in English");
+            return;
+          }
+
+          data = {
+            title_en: titleEn,
+            title_zh: titleZh,
+            title_jp: titleJp,
+            title_ko: titleKo,
+            description_en: descEn,
+            description_zh: descZh,
+            description_jp: descJp,
+            description_ko: descKo,
+            image,
+            date: Date.now(),
+          };
           refName = "services";
-          document.getElementById("serv-title").value = "";
-          document.getElementById("serv-desc").value = "";
+          // Clear form fields
+          document.getElementById("serv-title-en").value = "";
+          document.getElementById("serv-title-zh").value = "";
+          document.getElementById("serv-title-jp").value = "";
+          document.getElementById("serv-title-ko").value = "";
+          document.getElementById("serv-desc-en").value = "";
+          document.getElementById("serv-desc-zh").value = "";
+          document.getElementById("serv-desc-jp").value = "";
+          document.getElementById("serv-desc-ko").value = "";
           document.getElementById("serv-img").value = "";
         } else if (type === "gallery") {
           const url = document.getElementById("img-url").value;
@@ -271,22 +933,98 @@
           document.getElementById("img-url").value = "";
         } else if (type === "video") {
           const url = document.getElementById("vid-url").value;
-          const title = document.getElementById("vid-title").value;
-          if (!url) return;
-          data = { url, title, date: Date.now() };
+          // Collect all 4 languages for title
+          const titleEn = document.getElementById("vid-title-en").value;
+          const titleZh = document.getElementById("vid-title-zh").value;
+          const titleJp = document.getElementById("vid-title-jp").value;
+          const titleKo = document.getElementById("vid-title-ko").value;
+
+          if (!url) {
+            alert("Please enter YouTube URL");
+            return;
+          }
+
+          data = {
+            url,
+            title_en: titleEn,
+            title_zh: titleZh,
+            title_jp: titleJp,
+            title_ko: titleKo,
+            date: Date.now(),
+          };
           refName = "videos";
+          // Clear form fields
           document.getElementById("vid-url").value = "";
-          document.getElementById("vid-title").value = "";
+          document.getElementById("vid-title-en").value = "";
+          document.getElementById("vid-title-zh").value = "";
+          document.getElementById("vid-title-jp").value = "";
+          document.getElementById("vid-title-ko").value = "";
         } else if (type === "social") {
-          const content = document.getElementById("post-content").value;
+          // Collect all 4 languages for content
+          const contentEn = document.getElementById("post-content-en").value;
+          const contentZh = document.getElementById("post-content-zh").value;
+          const contentJp = document.getElementById("post-content-jp").value;
+          const contentKo = document.getElementById("post-content-ko").value;
+
           const image = document.getElementById("post-img").value;
           const link = document.getElementById("post-link").value;
-          if (!content) return;
-          data = { content, image, link, date: Date.now() };
+
+          if (!contentEn) {
+            alert("Please enter post content in English");
+            return;
+          }
+
+          data = {
+            content_en: contentEn,
+            content_zh: contentZh,
+            content_jp: contentJp,
+            content_ko: contentKo,
+            image,
+            link,
+            date: Date.now(),
+          };
           refName = "social";
-          document.getElementById("post-content").value = "";
+          // Clear form fields
+          document.getElementById("post-content-en").value = "";
+          document.getElementById("post-content-zh").value = "";
+          document.getElementById("post-content-jp").value = "";
+          document.getElementById("post-content-ko").value = "";
           document.getElementById("post-img").value = "";
           document.getElementById("post-link").value = "";
+        } else if (type === "membership") {
+          const select = document.getElementById("mem-name");
+          const name = select.options[select.selectedIndex].text;
+          const key = select.value;
+
+          // Get all 4 languages for recharge
+          const rechargeEn = document.getElementById("mem-recharge-en").value;
+          const rechargeZh = document.getElementById("mem-recharge-zh").value;
+          const rechargeJp = document.getElementById("mem-recharge-jp").value;
+          const rechargeKo = document.getElementById("mem-recharge-ko").value;
+
+          // Get all 4 languages for benefits
+          const benefitsEn = document.getElementById("mem-benefits-en").value;
+          const benefitsZh = document.getElementById("mem-benefits-zh").value;
+          const benefitsJp = document.getElementById("mem-benefits-jp").value;
+          const benefitsKo = document.getElementById("mem-benefits-ko").value;
+
+          data = {
+            name,
+            recharge_en: rechargeEn,
+            recharge_zh: rechargeZh,
+            recharge_jp: rechargeJp,
+            recharge_ko: rechargeKo,
+            benefits_en: benefitsEn,
+            benefits_zh: benefitsZh,
+            benefits_jp: benefitsJp,
+            benefits_ko: benefitsKo,
+            date: Date.now(),
+          };
+
+          db.ref("memberships/" + key).set(data);
+          alert("Membership Updated!");
+          // Don't clear fields so user can see what they updated
+          return;
         }
 
         db.ref(refName).push(data);
@@ -297,6 +1035,31 @@
         if (confirm("Delete this item?")) {
           db.ref(type + "/" + key).remove();
         }
+      }
+
+      // Helper function to get localized content with fallback
+      function getLocalizedContent(item, fieldName) {
+        if (!item || !fieldName) return "";
+        // Get current language from i18next or localStorage
+        const lang = (
+          i18next?.language ||
+          localStorage.getItem("userLanguage") ||
+          "en"
+        ).substring(0, 2);
+
+        // Try current language first
+        if (item[`${fieldName}_${lang}`]) {
+          return item[`${fieldName}_${lang}`];
+        }
+        // Fallback to English
+        if (item[`${fieldName}_en`]) {
+          return item[`${fieldName}_en`];
+        }
+        // Fallback to original field (for backward compatibility)
+        if (item[fieldName]) {
+          return item[fieldName];
+        }
+        return "";
       }
 
       function loadAdminData() {
@@ -315,30 +1078,75 @@
                 if (type === "banners") {
                   contentHtml = `<img src="${item.url}" style="height:50px; border-radius:4px;"> <strong>Banner Slide</strong>`;
                 } else if (type === "services") {
-                  contentHtml = `<strong>${item.title}</strong><br><small style="color:#666;">${item.description ? item.description.substring(0, 40) + "..." : ""}</small>`;
+                  const titleEn = item.title_en || "";
+                  const titleZh = item.title_zh || "";
+                  const titleJp = item.title_jp || "";
+                  const titleKo = item.title_ko || "";
+                  const descEn = item.description_en || "";
+
+                  contentHtml = `
+                    <div style="margin-bottom: 10px;">
+                      <strong style="color: var(--primary);">${titleEn}</strong>
+                      ${titleZh ? `<span style="margin-left: 10px; padding: 2px 6px; background: #f0f0f0; border-radius: 3px; font-size: 0.85rem;">${titleZh}</span>` : ""}
+                      ${titleJp ? `<span style="margin-left: 5px; padding: 2px 6px; background: #f0f0f0; border-radius: 3px; font-size: 0.85rem;">${titleJp}</span>` : ""}
+                      ${titleKo ? `<span style="margin-left: 5px; padding: 2px 6px; background: #f0f0f0; border-radius: 3px; font-size: 0.85rem;">${titleKo}</span>` : ""}
+                    </div>
+                    <small style="color:#666; display: block; margin-top: 5px;">${descEn ? descEn.substring(0, 60) + "..." : "No description"}</small>
+                  `;
                 } else if (type === "videos") {
-                  contentHtml = `<strong>${item.title}</strong><br><small style="color:#666;">${item.url}</small>`;
+                  const titleEn = item.title_en || "Untitled";
+                  const titleZh = item.title_zh || "";
+                  const titleJp = item.title_jp || "";
+                  const titleKo = item.title_ko || "";
+
+                  contentHtml = `
+                    <div style="margin-bottom: 5px;">
+                      <strong>${titleEn}</strong>
+                      ${titleZh ? `<span style="margin-left: 10px; padding: 2px 6px; background: #f0f0f0; border-radius: 3px; font-size: 0.85rem;">${titleZh}</span>` : ""}
+                      ${titleJp ? `<span style="margin-left: 5px; padding: 2px 6px; background: #f0f0f0; border-radius: 3px; font-size: 0.85rem;">${titleJp}</span>` : ""}
+                      ${titleKo ? `<span style="margin-left: 5px; padding: 2px 6px; background: #f0f0f0; border-radius: 3px; font-size: 0.85rem;">${titleKo}</span>` : ""}
+                    </div>
+                    <small style="color:#666;">${item.url}</small>
+                  `;
                 } else if (type === "gallery") {
                   contentHtml = `<img src="${item.url}" style="height:50px; border-radius:4px;">`;
                 } else if (type === "social") {
+                  const contentEn = item.content_en || "";
+                  const contentZh = item.content_zh || "";
+                  const contentJp = item.content_jp || "";
+                  const contentKo = item.content_ko || "";
+
                   const imgHtml = item.image
-                    ? `<img src="${item.image}" style="width:30px; height:30px; object-fit:cover; border-radius:4px; margin-right:8px; float:left;">`
+                    ? `<img src="${item.image}" style="width:40px; height:40px; object-fit:cover; border-radius:4px; margin-right:10px; float:left;">`
                     : "";
                   const linkHtml = item.link
                     ? `<i class="fas fa-link" style="color:var(--primary); margin-left:5px;" title="Link attached"></i>`
                     : "";
 
                   contentHtml = `
-                                <div style="display:flex; align-items:center;">
-                                    ${imgHtml}
-                                    <span>${item.content.substring(0, 40)}${item.content.length > 40 ? "..." : ""} ${linkHtml}</span>
-                                </div>`;
+                    <div style="display:flex; align-items:flex-start;">
+                      ${imgHtml}
+                      <div style="flex: 1;">
+                        <div style="margin-bottom: 8px;">
+                          <span>${contentEn.substring(0, 50)}${contentEn.length > 50 ? "..." : ""} ${linkHtml}</span>
+                        </div>
+                        <div style="display: flex; gap: 5px; flex-wrap: wrap; font-size: 0.8rem;">
+                          ${contentZh ? `<span style="padding: 2px 6px; background: #f0f0f0; border-radius: 3px;">${contentZh.substring(0, 30)}...</span>` : ""}
+                          ${contentJp ? `<span style="padding: 2px 6px; background: #f0f0f0; border-radius: 3px;">${contentJp.substring(0, 30)}...</span>` : ""}
+                          ${contentKo ? `<span style="padding: 2px 6px; background: #f0f0f0; border-radius: 3px;">${contentKo.substring(0, 30)}...</span>` : ""}
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                } else if (type === "memberships") {
+                  const rechargeEn = item.recharge_en || "";
+                  contentHtml = `<strong>${item.name}</strong><br><small>${rechargeEn}</small>`;
                 }
 
                 el.innerHTML += `
                             <div class="admin-item" style="overflow:hidden;">
                                 <button class="del-btn" onclick="deleteItem('${type}', '${key}')">×</button>
-                                <div style="color:#aaa; font-size:0.7rem; margin-bottom:5px;">${dateStr}</div>
+                                <div style="color:#aaa; font-size:0.7rem; margin-bottom:8px;">${dateStr}</div>
                                 ${contentHtml}
                             </div>`;
               });
@@ -361,6 +1169,36 @@
         db.ref("social").on("value", (s) =>
           renderList(s, "admin-social-list", "social"),
         );
+        db.ref("memberships").on("value", (s) =>
+          renderList(s, "admin-membership-list", "memberships"),
+        );
+
+        // Load initial membership details for the default selection
+        loadMembershipDetails();
+
+        // Load SEO Settings
+        db.ref("settings/seo").on("value", (snap) => {
+          const val = snap.val();
+          if (val) {
+            if (document.getElementById("seo-title"))
+              document.getElementById("seo-title").value = val.title || "";
+            if (document.getElementById("seo-desc"))
+              document.getElementById("seo-desc").value = val.description || "";
+            if (document.getElementById("seo-keywords"))
+              document.getElementById("seo-keywords").value =
+                val.keywords || "";
+          }
+        });
+
+        // Load Chatbot Prompt
+        db.ref("settings/chatbot").on("value", (snap) => {
+          const val = snap.val();
+          if (val && val.prompt) {
+            if (document.getElementById("chatbot-prompt"))
+              document.getElementById("chatbot-prompt").value =
+                val.prompt || "";
+          }
+        });
       }
     </script>
     <footer>
