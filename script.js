@@ -552,7 +552,7 @@ if (typeof i18next !== "undefined") {
 // ==========================================
 // API key is now handled securely by Netlify Function on the server
 // No sensitive data is exposed to the client
-const GROQ_MODEL = "llama-3.3-70b-versatile"; // Latest Llama 3.3 model
+const GROQ_MODEL = "llama-3.1-8b-instant";
 
 let chatbotSettings = null;
 let chatHistory = [];
@@ -703,11 +703,20 @@ async function sendChatMessage() {
           };
         })
         .filter((m) => m.content && m.content.trim() !== ""),
-      { role: "user", content: msg },
     ];
 
+    const isLocal =
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1";
+    // Use local dev server for testing, otherwise use the production Netlify function
+    const apiUrl = isLocal
+      ? "http://localhost:8888/.netlify/functions/chatbot"
+      : "/.netlify/functions/chatbot";
+
+    console.log("Chatbot sending request to:", apiUrl);
+
     // Call Netlify Function (which proxies to Groq API securely)
-    const response = await fetch("/.netlify/functions/chatbot", {
+    const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -735,9 +744,6 @@ async function sendChatMessage() {
     }
 
     const botReply = data.choices[0].message.content;
-
-    // Add user message to history
-    chatHistory.push({ role: "user", parts: [{ text: msg }] });
 
     // Add bot reply to history and display
     chatHistory.push({ role: "model", parts: [{ text: botReply }] });
