@@ -685,11 +685,14 @@ async function sendChatMessage() {
 
     const SPA_CONTEXT = `${basePrompt}\n\nIMPORTANT: Please reply to the user in ${targetLang}.`;
 
+    // Limit history to last 6 messages to prevent hitting token limits (TPM)
+    const recentHistory = chatHistory.slice(-6);
+
     // Build messages for Groq (OpenAI-compatible format)
     // Note: chatHistory already contains the latest user message
     const messages = [
       { role: "system", content: SPA_CONTEXT },
-      ...chatHistory
+      ...recentHistory
         .map((item) => {
           let text = "";
           if (item.parts && item.parts[0] && item.parts[0].text) {
