@@ -184,12 +184,8 @@
     "typing": "Typing...",
     "placeholder": "Ask a question...",
     "error": "I am having trouble connecting right now. Please call our front desk at +63-999-816-8888.",
-<<<<<<< HEAD
     "systemContext": "You are a helpful AI assistant for Luo City Spa Club. Please call +63-999-816-8888 for assistance.",
     "tooltip": "Chat here!"
-=======
-    "systemContext": "You are a helpful AI assistant for Luo City Spa Club. Please call +63-999-816-8888 for assistance."
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
   },
   "admin": {
     "title": "Admin Dashboard",

@@ -812,6 +812,18 @@ footer {
   margin-bottom: 15px;
 }
 
+.service-link {
+  color: var(--secondary);
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.service-link:hover {
+  text-decoration: underline;
+}
+
 /* --- AI CHAT WIDGET --- */
 .chat-widget-btn {
   position: fixed;
@@ -834,7 +846,6 @@ footer {
 .chat-widget-btn:hover {
   transform: scale(1.1);
 }
-<<<<<<< HEAD
 
 .chat-tooltip {
   position: absolute;
@@ -860,8 +871,6 @@ footer {
   animation: bounceLeft 1s infinite alternate;
 }
 
-=======
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
 .chat-window {
   position: fixed;
   bottom: 90px;
@@ -943,7 +952,6 @@ footer {
   display: none;
 }
 
-<<<<<<< HEAD
 @keyframes bounceLeft {
   from {
     transform: translateY(-50%) translateX(0);
@@ -953,8 +961,6 @@ footer {
   }
 }
 
-=======
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
 /* --- MOBILE FIX FOR CHAT --- */
 @media (max-width: 480px) {
   .chat-window {
@@ -964,4 +970,25 @@ footer {
     bottom: 90px; /* Keeps it above the button */
     height: 60vh; /* Takes up 60% of screen height */
   }
+}
+
+/* --- DYNAMIC JS CARD STYLES --- */
+.membership-card-content {
+  text-align: left;
+  padding: 30px;
+}
+.membership-img {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+.membership-recharge {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.membership-benefits {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.95rem;
+  color: #555;
 }

@@ -66,11 +66,11 @@ const createServiceCard = (item) => {
   const bookNowText = i18next?.t("buttons.bookNow") || "Book Now";
   return `
     <div class="card">
-        <img src="${imgUrl}" alt="${escapeHtml(title)}" class="service-card-img" style="width:100%; height:250px; object-fit:cover; border-bottom:4px solid var(--secondary);">
-        <div class="service-content" style="padding:25px; text-align:left;">
-            <h3 style="font-size:1.5rem; margin-bottom:12px; color:var(--primary);">${escapeHtml(title)}</h3>
-            <p style="color:#666; font-size:1rem; line-height:1.6; margin-bottom:15px;">${escapeHtml(description)}</p>
-            <a href="contact.html" style="color:var(--secondary); font-weight:bold; text-decoration:none; text-transform:uppercase; font-size:0.8rem;">${bookNowText} <i class="fas fa-arrow-right"></i></a>
+        <img src="${imgUrl}" alt="${escapeHtml(title)}" class="service-card-img">
+        <div class="service-content">
+            <h3>${escapeHtml(title)}</h3>
+            <p>${escapeHtml(description)}</p>
+            <a href="contact.html" class="service-link">${bookNowText} <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>`;
 };
@@ -81,8 +81,9 @@ const createPhotoCard = (item) => {
   const altText =
     getLocalized(item, "title") ||
     i18next?.t("gallery.photoAlt", "Luo City Spa Gallery Image");
+  const safeUrl = item.url ? item.url.replace(/'/g, "\\'") : "";
   return `
-    <div class="card gallery-item" onclick="openLightbox('${item.url}')">
+    <div class="card gallery-item" onclick="openLightbox('${safeUrl}')">
         <img src="${item.url}" alt="${escapeHtml(altText)}" class="gallery-img">
         <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
     </div>`;
@@ -210,11 +211,11 @@ const createMembershipCard = (item) => {
 
   return `
     <div class="card">
-        <div class="card-content" style="text-align: left">
-            ${imgUrl ? `<img src="${imgUrl}" alt="${escapeHtml(name)}" style="width: 100%; margin-bottom: 15px; border-radius: 6px">` : ""}
-            <h3 style="margin-bottom: 8px">${escapeHtml(name)}</h3>
-            <p style="font-weight: 600; margin-bottom: 12px">${escapeHtml(recharge)}</p>
-            <ul style="list-style: none; padding-left: 0; font-size: 0.95rem; color: #555;">
+        <div class="card-content membership-card-content">
+            ${imgUrl ? `<img src="${imgUrl}" alt="${escapeHtml(name)}" class="membership-img">` : ""}
+            <h3>${escapeHtml(name)}</h3>
+            <p class="membership-recharge">${escapeHtml(recharge)}</p>
+            <ul class="membership-benefits">
                 ${benefitsList}
             </ul>
         </div>
@@ -326,6 +327,7 @@ function loadContent() {
         ? Object.values(val)
             .reverse()
             .filter((item) => {
+              if (!item.url) return false;
               const u = (item.url || "").toLowerCase();
               return (
                 !u.includes("youtube") &&
@@ -347,24 +349,12 @@ function loadContent() {
           if (btn) btn.classList.remove("hide");
         }
       } else {
-        const updateGallery = (showAll) => {
-          const displayData = showAll ? data : data.slice(0, 3);
-          galleryGrid.innerHTML =
-            displayData.map(createPhotoCard).join("") ||
-            `<p>${i18next.t("messages.noPhotos", "No photos yet.")}</p>`;
-          const container = document.getElementById("gallery-more-container");
-          if (container) {
-            if (data.length > 3 && !showAll) {
-              container.innerHTML = `<button class="btn-outline" id="gallery-see-more-btn">See More</button>`;
-              document
-                .getElementById("gallery-see-more-btn")
-                .addEventListener("click", () => updateGallery(true));
-            } else {
-              container.innerHTML = "";
-            }
-          }
-        };
-        updateGallery(false);
+        // Show all photos on the gallery page
+        galleryGrid.innerHTML =
+          data.map(createPhotoCard).join("") ||
+          `<p>${i18next.t("messages.noPhotos", "No photos yet.")}</p>`;
+        const container = document.getElementById("gallery-more-container");
+        if (container) container.innerHTML = "";
       }
     });
   }
@@ -575,27 +565,17 @@ db.ref("settings/chatbot").on("value", (snap) => {
 function initChatWidget() {
   if (window.location.pathname.includes("admin.html")) return;
 
-<<<<<<< HEAD
   // Use hardcoded English fallbacks. The data-i18n attributes will be
   // correctly translated by updatePageLanguage() after the widget is injected.
   const title = "Luo City Assistant";
   const welcome = "Hello! How can I help you today?";
   const typing = "Typing...";
   const tooltipText = "Chat here!";
-=======
-  const title = i18next?.t("chatbot.title") || "Luo City Assistant";
-  const welcome =
-    i18next?.t("chatbot.welcome") || "Hello! How can I help you today?";
-  const typing = i18next?.t("chatbot.typing") || "Typing...";
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
 
   const html = `
         <div class="chat-widget-btn" onclick="toggleChat()">
             <i class="fas fa-comments"></i>
-<<<<<<< HEAD
             <span class="chat-tooltip" id="chat-tooltip" data-i18n="chatbot.tooltip">${escapeHtml(tooltipText)}</span>
-=======
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
         </div>
         <div class="chat-window" id="chat-window">
             <div class="chat-header">
@@ -618,7 +598,6 @@ function initChatWidget() {
   if (typeof updatePageLanguage === "function") {
     updatePageLanguage();
   }
-<<<<<<< HEAD
 
   // Show tooltip animation after 2 seconds
   setTimeout(() => {
@@ -668,12 +647,6 @@ function toggleChat() {
   if (win.classList.contains("active") && tooltip) {
     tooltip.classList.remove("show");
   }
-=======
-}
-
-function toggleChat() {
-  document.getElementById("chat-window").classList.toggle("active");
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
 }
 
 function handleChatKey(e) {
@@ -685,20 +658,15 @@ async function sendChatMessage() {
   const msg = input.value.trim();
   if (!msg) return;
 
-<<<<<<< HEAD
   // 1. Update UI and History immediately for User
   addMessage(msg, "user");
   chatHistory.push({ role: "user", parts: [{ text: msg }] });
   sessionStorage.setItem("chatHistory", JSON.stringify(chatHistory));
 
-=======
-  addMessage(msg, "user");
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
   input.value = "";
   document.getElementById("typing-indicator").style.display = "block";
 
   try {
-<<<<<<< HEAD
     const currentLangCode = (i18next.language || "en").substring(0, 2);
     const langMap = {
       en: "English",
@@ -735,25 +703,7 @@ async function sendChatMessage() {
           };
         })
         .filter((m) => m.content && m.content.trim() !== ""),
-=======
-    const currentLang = i18next.language || "en";
-    const SPA_CONTEXT =
-      (getLocalized(chatbotSettings, "prompt") ||
-        i18next.t(
-          "chatbot.systemContext",
-          "You are a helpful AI assistant for Luo City Spa Club. Please call +63-999-816-8888 for assistance.",
-        )) + ` (Please reply in ${currentLang} language)`;
-
-    // Build messages for Groq (OpenAI-compatible format)
-    const messages = [
-      { role: "system", content: SPA_CONTEXT },
-      ...chatHistory.map((item) => ({
-        role: item.role === "model" ? "assistant" : "user",
-        content:
-          item.role === "model" ? item.parts[0].text : item.parts[0].text,
-      })),
       { role: "user", content: msg },
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
     ];
 
     // Call Netlify Function (which proxies to Groq API securely)
@@ -786,21 +736,15 @@ async function sendChatMessage() {
 
     const botReply = data.choices[0].message.content;
 
-<<<<<<< HEAD
-    // Add bot reply to history and display
-    chatHistory.push({ role: "model", parts: [{ text: botReply }] });
-    addMessage(botReply, "bot");
-
-    // Save to sessionStorage
-    sessionStorage.setItem("chatHistory", JSON.stringify(chatHistory));
-=======
     // Add user message to history
     chatHistory.push({ role: "user", parts: [{ text: msg }] });
 
     // Add bot reply to history and display
     chatHistory.push({ role: "model", parts: [{ text: botReply }] });
     addMessage(botReply, "bot");
->>>>>>> 437cdc36f8181f15dbab5f3360b7156a4aa6caa7
+
+    // Save to sessionStorage
+    sessionStorage.setItem("chatHistory", JSON.stringify(chatHistory));
   } catch (error) {
     console.error("Chatbot Error:", error);
     addMessage(
