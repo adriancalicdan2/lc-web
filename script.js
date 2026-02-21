@@ -683,7 +683,7 @@ async function sendChatMessage() {
         "You are a helpful AI assistant for Luo City Spa Club. Please call +63-999-816-8888 for assistance.",
       );
 
-    const SPA_CONTEXT = `${basePrompt}\n\nIMPORTANT: Please reply to the user in ${targetLang}.`;
+    const SPA_CONTEXT = `${basePrompt}\n\n---RULES---\n1. CRITICAL: Reply to the user in ${targetLang}.\n2. CRITICAL: Keep all answers short and concise, under 50 words if possible.`;
 
     // FIX: Remove chat history from API request to prevent 413 Token Limit errors.
     // We only send the System Prompt and the Current Message.
