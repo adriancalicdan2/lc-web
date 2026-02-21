@@ -685,8 +685,9 @@ async function sendChatMessage() {
 
     const SPA_CONTEXT = `${basePrompt}\n\nIMPORTANT: Please reply to the user in ${targetLang}.`;
 
-    // Limit history to last 6 messages to prevent hitting token limits (TPM)
-    const recentHistory = chatHistory.slice(-6);
+    // Limit history to last 4 messages to prevent hitting token limits (TPM)
+    // Reduced from 6 to 4 as 6000 TPM limit was still being hit
+    const recentHistory = chatHistory.slice(-4);
 
     // Build messages for Groq (OpenAI-compatible format)
     // Note: chatHistory already contains the latest user message
@@ -700,6 +701,9 @@ async function sendChatMessage() {
           } else if (item.content) {
             text = item.content;
           }
+          // Truncate individual messages to prevent single massive messages from breaking the limit
+          if (text.length > 2000)
+            text = text.substring(0, 2000) + "...(truncated)";
           return {
             role: item.role === "model" ? "assistant" : "user",
             content: text,
