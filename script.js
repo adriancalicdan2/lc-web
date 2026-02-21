@@ -555,7 +555,6 @@ if (typeof i18next !== "undefined") {
 const GROQ_MODEL = "llama-3.1-8b-instant";
 
 let chatbotSettings = null;
-let chatHistory = [];
 
 // Load chatbot prompt from Firebase
 db.ref("settings/chatbot").on("value", (snap) => {
@@ -620,22 +619,6 @@ function initChatWidget() {
       }
     }
   });
-
-  // Restore chat history from sessionStorage
-  const savedHistory = sessionStorage.getItem("chatHistory");
-  if (savedHistory) {
-    try {
-      chatHistory = JSON.parse(savedHistory);
-      chatHistory.forEach((msg) => {
-        const text =
-          msg.parts && msg.parts[0] ? msg.parts[0].text : msg.content;
-        const sender = msg.role === "model" ? "bot" : "user";
-        addMessage(text, sender);
-      });
-    } catch (e) {
-      console.error("Failed to load chat history", e);
-    }
-  }
 }
 
 function toggleChat() {
@@ -660,8 +643,6 @@ async function sendChatMessage() {
 
   // 1. Update UI and History immediately for User
   addMessage(msg, "user");
-  chatHistory.push({ role: "user", parts: [{ text: msg }] });
-  sessionStorage.setItem("chatHistory", JSON.stringify(chatHistory));
 
   input.value = "";
   document.getElementById("typing-indicator").style.display = "block";
@@ -737,11 +718,7 @@ async function sendChatMessage() {
     const botReply = data.choices[0].message.content;
 
     // Add bot reply to history and display
-    chatHistory.push({ role: "model", parts: [{ text: botReply }] });
     addMessage(botReply, "bot");
-
-    // Save to sessionStorage
-    sessionStorage.setItem("chatHistory", JSON.stringify(chatHistory));
   } catch (error) {
     console.error("Chatbot Error:", error);
     addMessage(
